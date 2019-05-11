@@ -1,10 +1,10 @@
 # Rocket VTOL
 An experimental research project with the objective of developing a fast, modern, and reliable VTOL system for a hybrid rocket.
-Created by Jason Chen on 10 May, 2019. Written in Python 3.7. Subject to change.
+Created by Jason Chen on _10 May, 2019_. **Written in Python 3.7**. Subject to change.
 
 # Structure
 ## Core 
-Core functionalities for basic operation of the rocket during flight. Handles startup dictates the actions of modules.
+- Core functionalities for basic operation of the rocket during flight. Handles startup dictates the actions of modules.
     - `startup.py`: 
     Startup procedure. Establishes connections with the `ground_station`.
     - `main.py`: 
@@ -13,10 +13,10 @@ Core functionalities for basic operation of the rocket during flight. Handles st
     Class `ThreadHandler` initiates and maintains many parallel threads that run main modules throughout the entire operation of
     the rocket.
 ## Docs
-Contains documentation.
+- Contains documentation.
 
 ## Submodules
-Main modules.
+- Main modules.
     - **Control**: 
     All software that goes directly into the devlopment and implementation of the control alogirithm (Convex Optimization).
         - *dev*: 
@@ -53,7 +53,7 @@ Main modules.
     - **Propulsion**: 
     Controls the propulsion system of the rocket. Able to override COCA's commands if an abort command is issued. 
 ## Ground Station
-Contains software for the ground station.
+- Contains software for the ground station.
     - `gui.css`
     Graphical User Interface for ground-based mission control.
     - `main.py`
