@@ -1,7 +1,5 @@
 # Rocket VTOL
 An experimental research project with the objective of developing a fast, modern, and reliable VTOL system for a hybrid rocket.
-
-## Information
 Created by Jason Chen on 10 May, 2019. Written in Python 3.7. Subject to change.
 
 # Structure
