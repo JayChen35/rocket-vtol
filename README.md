@@ -16,9 +16,9 @@ Created by Jason Chen on _10 May, 2019_. **Written in Python 3.7**. Subject to c
 - Contains documentation.
 
 ## Submodules
-Main modules.
+- Main modules.
     - **Control**: 
-    All software that goes directly into the devlopment and implementation of the control alogirithm (Convex Optimization).
+    - All software that goes directly into the devlopment and implementation of the control alogirithm (Convex Optimization).
         - *dev/* : 
             - The `dev` directory contains development and training tools, including a simulator, to train ML models.
         - *cv/* : 
@@ -34,11 +34,11 @@ Main modules.
         - `tvc.py`: 
             - Controls the thrust vectoring of the propulsion system. Includes throttling.
     - **Sensors**: 
-    Passive module that constantly pulls data from `gps.py`, `imu.py`, and `cameras.py` stores it as a packet.
+    - Passive module that constantly pulls data from `gps.py`, `imu.py`, and `cameras.py` stores it as a packet.
     - **Comms**:
-    Manages all communication systems.
+    - Manages all communication systems.
         - `sdr.py`: 
-        SDR (Software-Defined Radio) for main communication medium between the ground station and the rocket.
+        - SDR (Software-Defined Radio) for main communication medium between the ground station and the rocket.
             - `send()`: 
                 - Sends telemetry packet, heartbeat signal, or mission logging information. Uses priority queue.
             - `listen()`: 
@@ -50,12 +50,12 @@ Main modules.
         - `command_ingest.py`: 
             - Pulls the latest command from `sdr.py`'s `listen()` method and processes the command.
     - **Abort**: 
-    Handles the abort procedure if ever needed. Able to override all systems.
+    - Handles the abort procedure if ever needed. Able to override all systems.
     - **Propulsion**: 
-    Controls the propulsion system of the rocket. Able to override COCA's commands if an abort command is issued. 
+    - Controls the propulsion system of the rocket. Able to override COCA's commands if an abort command is issued. 
 ## Ground Station
 - Contains software for the ground station.
     - `gui.css`
-    Graphical User Interface for ground-based mission control.
+    - Graphical User Interface for ground-based mission control.
     - `main.py`
-    Manages all ground station operations.
+    - Manages all ground station operations.
