@@ -3,12 +3,12 @@ An experimental research project with the objective of developing a fast, modern
 Created by Jason Chen on 10 May, 2019. Written in Python 3.7. *Subject to change.*
 
 # Structure
-`core`: Core functionalities for basic operation of the rocket during flight. Handles startup dictates the actions of modules.
+- `core`: Core functionalities for basic operation of the rocket during flight. Handles startup dictates the actions of modules.
     - `startup.py`: Startup procedure. Establishes connections with the `ground_station`.
     - `main.py`: Driver for the entire flight software system. Sets global variables and starts `thread_handler.py`.
     - `thread_handler.py`: Class `ThreadHandler` initiates and maintains many parallel threads that run main modules throughout the entire operation of the rocket.
-`docs`: Documentation.
-`submodules`: Main modules.
+- `docs`: Documentation.
+- `submodules`: Main modules.
     - `control`: All software that goes directly into the devlopment and implementation of the control alogirithm (Convex Optimization).
         - `dev`: The `dev` directory contains development and training tools, including a simulator, to train ML models.
         - `cv`: Computer-vision assisted attitude determination using OpenCV.
@@ -25,6 +25,6 @@ Created by Jason Chen on 10 May, 2019. Written in Python 3.7. *Subject to change
         - `command_ingest.py`: Pulls the latest command from `sdr.py`'s `listen()` method and processes the command.
     - `abort`: Handles the abort procedure if ever needed. Able to override all systems.
     - `propulsion`: Controls the propulsion system of the rocket. Able to override COCA's commands if an abort command is issued. 
-`ground_station`: Contains software for the ground station.
+- `ground_station`: Contains software for the ground station.
     - `gui.css`
     - `main.py`
