@@ -5,16 +5,17 @@ import struct
 from smbus2 import SMBusWrapper
 
 COMMAND_SET = {
-    'data': 1,
-    'status': 2,
+    'data': 0,
+    'status': 1,
+    'servo' : 2,
     'shutdown': 3
 }
 SLAVE_ADDRESS = 0x04
 
 def main():
     while True:
-        cmd = input("Send command (1) or pull data (2): ")
-        if cmd == "1":
+        cmd = input("Send command (0) or pull data (1): ")
+        if cmd == "0":
             print("Command set: ")
             to_print = ""
             for key, _ in COMMAND_SET.items():
@@ -29,7 +30,7 @@ def main():
                 else:
                     print("Invalid command.")
             break
-        elif cmd == "2":
+        elif cmd == "1":
             read_data()
             break
         else:
