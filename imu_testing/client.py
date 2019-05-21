@@ -9,7 +9,7 @@ from_server = sock.recv(4096).decode('utf-8')
 time.sleep(1)
 print(from_server)
 time.sleep(3)
-from_server2 = json.loads(sock.recv(4096))
+from_server2 = json.loads(sock.recv(4096))  # .decode('utf-8')?
 print(from_server2)
 print(from_server2['hi'])
 sock.close()

@@ -25,7 +25,7 @@ BNO data structure:
   [6] omega_x,
   [7] omega_y,
   [8] omega_z,
-  [9] temperature
+  [9] temp
 }
 */
 
