@@ -37,14 +37,31 @@ def main():
             while True:
                 temp = input("Send what command? (\"back\" to go back)")
                 if temp in COMMAND_SET:
-                    send_data(temp)
+                    if temp == "servo":
+                        servo_cmd = input("Set servo_x (0) or servo_y (1) to what degrees (Ex: 0,270)? ")
+                        try:
+                            set_to = servo_cmd.split(",")
+                            set_to = [int(x) for x in set_to]
+                            if set_to[0] == 0 or set_to[0] == 1:
+                                if set_to[1] >= 0 and set_to[1] <= 360:
+                                    sock.send(servo_cmd.encode('utf-8'))
+                                    print("Command sent. Awaiting execution of command.")
+                                    wait_for_reply()
+                                else:
+                                    print("Degrees out of bounds.")
+                            else:
+                                print("Servo number unrecognized.")
+                        except Exception as error:
+                            print("Error processing servo command: ", error)
+                    else:
+                        sock.send(temp.encode('utf-8'))
+                        print("Command sent. Awaiting execution of command.")
+                        wait_for_reply()
                     break
                 elif temp == "back":
                     break
                 else:
                     print("Invalid command.")
-            print("Command sent. Awaiting execution of command.")
-            wait_for_reply()
         elif cmd == "exit":
             sock.close()
             print("Connection terminated, exiting program.")
@@ -52,6 +69,8 @@ def main():
         else:
             print("Try again.")
 
+# After a command is sent to the RPi, wait_for_reply() waits for the RPi to
+# send a "DONE" message, to verify that the command has been executed.
 def wait_for_reply():
     start = time.time()
     while True:
