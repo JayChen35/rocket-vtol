@@ -9,7 +9,7 @@ COMMAND_SET = {
     'servo': 2,
     'disconnect': 3
 }
-SERVER_ADDRESS = '10.16.188.191'  # '192.168.1.35'
+SERVER_ADDRESS = '192.168.1.154'  # '192.168.1.35'
 PORT = 5000
 
 def init():
@@ -81,7 +81,7 @@ def wait_for_reply():
         msg = sock.recv(4096).decode('utf-8')
         if msg == "DONE":
             print("Status: Done.")
-            print("Time elapsed: ", "%.1f" % np.abs(start-float(time.time())), " seconds")
+            print("Time elapsed:", "%.3f" % np.abs(start-float(time.time())), "seconds")
             break
         elif msg == "SHUTDOWN":
             sock.close()

@@ -6,7 +6,7 @@ import json
 from smbus2 import SMBusWrapper
 
 SLAVE_ADDRESS = 0x04
-SERVER_ADDRESS = '10.16.188.191'  # '192.168.1.35'
+SERVER_ADDRESS = '192.168.1.154'  # '192.168.1.35'
 PORT = 5000
 COMMAND_SET = {
     'data': 0,
