@@ -1,0 +1,5 @@
+To generate documentation for a raisim class or method run:
+    python3 -c "import raisimpy as raisim; help(class_or_method_name)" > class_doc.txt
+
+For example for the world class, simply run:
+    python3 -c "import raisimpy as raisim;help(raisim.World())" > world_doc.txt

@@ -1,0 +1,508 @@
+Help on class Sphere in module raisimpy:
+
+class Sphere(SingleBodyObject)
+ |  Raisim Sphere.
+ |  
+ |  Method resolution order:
+ |      Sphere
+ |      SingleBodyObject
+ |      Object
+ |      pybind11_builtins.pybind11_object
+ |      builtins.object
+ |  
+ |  Methods defined here:
+ |  
+ |  __init__(self, /, *args, **kwargs)
+ |      Initialize self.  See help(type(self)) for accurate signature.
+ |  
+ |  get_radius(...)
+ |      get_radius(self: raisimpy.Sphere) -> float
+ |      
+ |      
+ |      Get the sphere's radius.
+ |      
+ |      Returns:
+ |          float: radius of the sphere.
+ |  
+ |  ----------------------------------------------------------------------
+ |  Methods inherited from SingleBodyObject:
+ |  
+ |  get_angular_velocity(...)
+ |      get_angular_velocity(self: raisimpy.SingleBodyObject) -> numpy.ndarray[float64[3, 1]]
+ |      
+ |      
+ |      Get the body's angular velocity position with respect to the world frame.
+ |      
+ |      Returns:
+ |          np.array[float[3]]: angular velocity in the world frame.
+ |  
+ |  get_body_inertia_matrix(...)
+ |      get_body_inertia_matrix(self: raisimpy.SingleBodyObject) -> numpy.ndarray[float64[3, 3]]
+ |      
+ |      
+ |      Get the body's inertia matrix expressed in the body frame.
+ |      
+ |      Returns:
+ |          np.array[float[3,3]]: body inertia matrix.
+ |  
+ |  get_collision_group(...)
+ |      get_collision_group(self: raisimpy.SingleBodyObject) -> int
+ |      
+ |      
+ |      Get the body's collision group.
+ |      
+ |      Returns:
+ |          int: collision group.
+ |  
+ |  get_collision_mask(...)
+ |      get_collision_mask(self: raisimpy.SingleBodyObject) -> int
+ |      
+ |      
+ |      Get the body's collision mask.
+ |      
+ |      Returns:
+ |          int: collision mask.
+ |  
+ |  get_collision_object(...)
+ |      get_collision_object(self: raisimpy.SingleBodyObject) -> dxGeom
+ |      
+ |      
+ |      Get the collision object.
+ |      
+ |      Returns:
+ |          dGeomID: collision object.
+ |  
+ |  get_com_position(...)
+ |      get_com_position(self: raisimpy.SingleBodyObject) -> numpy.ndarray[float64[3, 1]]
+ |      
+ |      
+ |      Get the body's center of mass position with respect to the world frame.
+ |      
+ |      Returns:
+ |          np.array[float[3]]: center of mass position in the world frame.
+ |  
+ |  get_contact_point_velocity(...)
+ |      get_contact_point_velocity(self: raisimpy.SingleBodyObject, point_id: int) -> numpy.ndarray[float64]
+ |      
+ |      
+ |      Get the contact point velocity.
+ |      
+ |      Args:
+ |          point_id (int): point id.
+ |      
+ |      Returns:
+ |          np.array[float[3]]: contact point velocity.
+ |  
+ |  get_energy(...)
+ |      get_energy(self: raisimpy.SingleBodyObject, gravity: numpy.ndarray[float64]) -> float
+ |      
+ |      
+ |      Get the body's total energy.
+ |      
+ |      Args:
+ |          gravity (np.array[float[3]]): gravity vector.
+ |      
+ |      Returns:
+ |          float: total energy.
+ |  
+ |  get_gyroscopic_mode(...)
+ |      get_gyroscopic_mode(self: raisimpy.SingleBodyObject) -> dxGeom
+ |      
+ |      
+ |      Get the gyroscopic mode.
+ |      
+ |      Returns:
+ |          raisim.GyroscopicMode: gyroscopic mode (between ['IMPLICIT_GYROSCOPIC_FORCE_BODY',
+ |          'IMPLICIT_GYROSCOPIC_FORCE_WORLD', 'EXPLICIT_GYROSCOPIC_FORCE', 'NO_GYROSCOPIC_FORCE'])
+ |  
+ |  get_kinetic_energy(...)
+ |      get_kinetic_energy(self: raisimpy.SingleBodyObject) -> float
+ |      
+ |      
+ |      Get the body's kinetic energy.
+ |      
+ |      Returns:
+ |          float: kinetic energy.
+ |  
+ |  get_linear_momentum(...)
+ |      get_linear_momentum(self: raisimpy.SingleBodyObject) -> numpy.ndarray[float64[3, 1]]
+ |      
+ |      
+ |      Get the body's linear momentum.
+ |      
+ |      Returns:
+ |          np.array[float[3]]: linear momentum.
+ |  
+ |  get_linear_velocity(...)
+ |      get_linear_velocity(self: raisimpy.SingleBodyObject) -> numpy.ndarray[float64[3, 1]]
+ |      
+ |      
+ |      Get the body's linear velocity with respect to the world frame.
+ |      
+ |      Returns:
+ |          np.array[float[3]]: linear velocity in the world frame.
+ |  
+ |  get_mass(...)
+ |      get_mass(self: raisimpy.SingleBodyObject, local_idx: int) -> float
+ |      
+ |      
+ |      Get the body's mass.
+ |      
+ |      Args:
+ |          local_idx (int): local index.
+ |      
+ |      Returns:
+ |          float: mass (kg).
+ |  
+ |  get_object_type(...)
+ |      get_object_type(self: raisimpy.SingleBodyObject) -> raisimpy.ObjectType
+ |      
+ |      
+ |      Get the body's type.
+ |      
+ |      Returns:
+ |          raisim.ObjectType: object type (BOX, CYLINDER, CAPSULE, CONE, SPHERE, etc.)
+ |  
+ |  get_position(...)
+ |      get_position(self: raisimpy.SingleBodyObject) -> numpy.ndarray[float64[3, 1]]
+ |      
+ |      
+ |      Get the body's position with respect to the world frame.
+ |      
+ |      Returns:
+ |          np.array[float[3]]: position in the world frame.
+ |  
+ |  get_potential_energy(...)
+ |      get_potential_energy(self: raisimpy.SingleBodyObject, gravity: numpy.ndarray[float64]) -> float
+ |      
+ |      
+ |      Get the body's potential energy due to gravity.
+ |      
+ |      Args:
+ |          gravity (np.array[float[3]]): gravity vector.
+ |      
+ |      Returns:
+ |          float: potential energy.
+ |  
+ |  get_quaternion(...)
+ |      get_quaternion(self: raisimpy.SingleBodyObject) -> numpy.ndarray[float64[4, 1]]
+ |      
+ |      
+ |      Get the body's orientation (expressed as a quaternion [w,x,y,z]) with respect to the world frame.
+ |      
+ |      Returns:
+ |          np.array[float[4]]: quaternion [w,x,y,z].
+ |  
+ |  get_rotation_matrix(...)
+ |      get_rotation_matrix(self: raisimpy.SingleBodyObject) -> numpy.ndarray[float64[3, 3]]
+ |      
+ |      
+ |      Get the body's orientation (expressed as a rotation matrix) with respect to the world frame.
+ |      
+ |      Returns:
+ |          np.array[float[3,3]]: rotation matrix.
+ |  
+ |  get_world_inertia_matrix(...)
+ |      get_world_inertia_matrix(self: raisimpy.SingleBodyObject) -> numpy.ndarray[float64[3, 3]]
+ |      
+ |      
+ |      Get the body's inertia matrix expressed in the world frame.
+ |      
+ |      Returns:
+ |          np.array[float[3,3]]: world inertia matrix.
+ |  
+ |  get_world_position(...)
+ |      get_world_position(self: raisimpy.SingleBodyObject) -> numpy.ndarray[float64[3, 1]]
+ |      
+ |      
+ |      Get the body's position with respect to the world frame.
+ |      
+ |      Returns:
+ |          np.array[float[3]]: position in the world frame.
+ |  
+ |  get_world_rotation_matrix(...)
+ |      get_world_rotation_matrix(self: raisimpy.SingleBodyObject) -> numpy.ndarray[float64[3, 3]]
+ |      
+ |      
+ |      Get the body's orientation (expressed as a rotation matrix) with respect to the world frame.
+ |      
+ |      Returns:
+ |          np.array[float[3,3]]: rotation matrix.
+ |  
+ |  integrate(...)
+ |      integrate(self: raisimpy.SingleBodyObject, dt: float) -> None
+ |      
+ |      integrate.
+ |  
+ |  pre_contact_solver_update1(...)
+ |      pre_contact_solver_update1(self: raisimpy.SingleBodyObject, gravity: numpy.ndarray[float64], dt: float) -> None
+ |  
+ |  pre_contact_solver_update2(...)
+ |      pre_contact_solver_update2(self: raisimpy.SingleBodyObject, gravity: numpy.ndarray[float64], dt: float) -> None
+ |  
+ |  set_angular_damping(...)
+ |      set_angular_damping(self: raisimpy.SingleBodyObject, damping: numpy.ndarray[float64]) -> None
+ |      
+ |      
+ |      Set the body's angular damping.
+ |      
+ |      Args:
+ |          damping (np.array[float[3]]): angular damping.
+ |  
+ |  set_body_type(...)
+ |      set_body_type(self: raisimpy.SingleBodyObject, body_type: raisimpy.BodyType) -> None
+ |      
+ |      
+ |      Set the body's type.
+ |      
+ |      Args:
+ |          body_type (BodyType): body type.
+ |  
+ |  set_external_force(...)
+ |      set_external_force(self: raisimpy.SingleBodyObject, local_idx: int, force: numpy.ndarray[float64]) -> None
+ |      
+ |      
+ |      Set the external force on the body.
+ |      
+ |      Args:
+ |          local_idx (int): local index.
+ |          force (np.array[float[3]]): force vector.
+ |  
+ |  set_external_torque(...)
+ |      set_external_torque(self: raisimpy.SingleBodyObject, local_idx: int, torque: numpy.ndarray[float64]) -> None
+ |      
+ |      
+ |      Set the external force on the body.
+ |      
+ |      Args:
+ |          local_idx (int): local index.
+ |          force (np.array[float[3]]): force vector.
+ |  
+ |  set_gyroscopic_mode(...)
+ |      set_gyroscopic_mode(self: raisimpy.SingleBodyObject, mode: raisimpy.GyroscopicMode) -> None
+ |      
+ |      
+ |      Set the gyroscopic mode for the body.
+ |      
+ |      Args:
+ |          mode (GyroscopicMode): gyroscopic mode (select between (between [GyroscopicMode.IMPLICIT_GYROSCOPIC_FORCE_BODY,
+ |              GyroscopicMode.IMPLICIT_GYROSCOPIC_FORCE_WORLD, GyroscopicMode.EXPLICIT_GYROSCOPIC_FORCE,
+ |              GyroscopicMode.NO_GYROSCOPIC_FORCE])
+ |  
+ |  set_linear_damping(...)
+ |      set_linear_damping(self: raisimpy.SingleBodyObject, damping: float) -> None
+ |      
+ |      
+ |      Set the body's linear damping coefficient.
+ |      
+ |      Args:
+ |          damping (float): linear damping coefficient.
+ |  
+ |  set_orientation(...)
+ |      set_orientation(*args, **kwargs)
+ |      Overloaded function.
+ |      
+ |      1. set_orientation(self: raisimpy.SingleBodyObject, w: float = 1.0, x: float = 0.0, y: float = 0.0, z: float = 0.0) -> None
+ |      
+ |      
+ |                  Set the specified orientation (expressed as a quaternion [x,y,z,w]) for the body.
+ |      
+ |                  Args:
+ |                      w (float): scalar component of the quaternion.
+ |                      x (float): x component of the vector in the quaternion.
+ |                      y (float): y component of the vector in the quaternion.
+ |                      z (float): z component of the vector in the quaternion.
+ |                  
+ |      
+ |      2. set_orientation(self: raisimpy.SingleBodyObject, rotation_matrix: numpy.ndarray[float64[3, 3]]) -> None
+ |      
+ |      
+ |                  Set the specified orientation (expressed as a rotation matrix) for the body.
+ |      
+ |                  Args:
+ |                      rotation_matrix (np.array[float[3,3]]): rotation matrix.
+ |                  
+ |      
+ |      3. set_orientation(self: raisimpy.SingleBodyObject, quaternion: numpy.ndarray[float64]) -> None
+ |      
+ |      
+ |                  Set the specified orientation (expressed as a quaternion [x,y,z,w]) for the body.
+ |      
+ |                  Args:
+ |                      quaternion (np.array[float[4]]): quaternion [x,y,z,w].
+ |  
+ |  set_pose(...)
+ |      set_pose(*args, **kwargs)
+ |      Overloaded function.
+ |      
+ |      1. set_pose(self: raisimpy.SingleBodyObject, position: numpy.ndarray[float64[3, 1]], rotation_matrix: numpy.ndarray[float64[3, 3]]) -> None
+ |      
+ |      
+ |                  Set the specified pose for the body.
+ |      
+ |                  Args:
+ |                      position (np.array[float[3]]): origin position vector.
+ |                      rotation_matrix (np.array[float[3,3]]): rotation matrix.
+ |                  
+ |      
+ |      2. set_pose(self: raisimpy.SingleBodyObject, position: numpy.ndarray[float64[3, 1]], quaternion: numpy.ndarray[float64]) -> None
+ |      
+ |      
+ |                  Set the specified pose for the body.
+ |      
+ |                  Args:
+ |                      position (np.array[float[3]]): origin position vector.
+ |                      quaternion (np.array[float[4]]): quaternion (expressed as [w,x,y,z]).
+ |  
+ |  set_position(...)
+ |      set_position(*args, **kwargs)
+ |      Overloaded function.
+ |      
+ |      1. set_position(self: raisimpy.SingleBodyObject, origin_position: numpy.ndarray[float64[3, 1]]) -> None
+ |      
+ |      
+ |                  Set the specified origin position.
+ |      
+ |                  Args:
+ |                      origin_position (np.array[float[3]]): origin position.
+ |                  
+ |      
+ |      2. set_position(self: raisimpy.SingleBodyObject, x: float, y: float, z: float) -> None
+ |      
+ |      
+ |                  Set the specified origin position.
+ |      
+ |                  Args:
+ |                      x (float): x component of the origin position.
+ |                      y (float): y component of the origin position.
+ |                      z (float): z component of the origin position.
+ |  
+ |  set_velocity(...)
+ |      set_velocity(*args, **kwargs)
+ |      Overloaded function.
+ |      
+ |      1. set_velocity(self: raisimpy.SingleBodyObject, linear_velocity: numpy.ndarray[float64[3, 1]], angular_velocity: numpy.ndarray[float64[3, 1]]) -> None
+ |      
+ |      
+ |                  Set the specified linear and angular velocities for the body.
+ |      
+ |                  Args:
+ |                      linear_velocity (np.array[float[3]]): linear velocity.
+ |                      angular_velocity (np.array[float[3,3]]): angular velocity.
+ |                  
+ |      
+ |      2. set_velocity(self: raisimpy.SingleBodyObject, dx: float, dy: float, dz: float, wx: float, wy: float, wz: float) -> None
+ |      
+ |      
+ |                  Set the specified linear and angular velocities for the body.
+ |      
+ |                  Args:
+ |                      dx (float): x component of the linear velocity.
+ |                      dy (float): y component of the linear velocity.
+ |                      dz (float): z component of the linear velocity.
+ |                      wx (float): x component of the angular velocity.
+ |                      wy (float): y component of the angular velocity.
+ |                      wz (float): z component of the angular velocity.
+ |  
+ |  update_collision(...)
+ |      update_collision(self: raisimpy.SingleBodyObject) -> None
+ |      
+ |      Update the collisions.
+ |  
+ |  ----------------------------------------------------------------------
+ |  Methods inherited from Object:
+ |  
+ |  add_contact_to_per_object_contact(...)
+ |      add_contact_to_per_object_contact(self: raisimpy.Object, contact: raisimpy.contact.Contact) -> None
+ |  
+ |  clear_per_object_contact(...)
+ |      clear_per_object_contact(self: raisimpy.Object) -> None
+ |  
+ |  get_body_type(...)
+ |      get_body_type(*args, **kwargs)
+ |      Overloaded function.
+ |      
+ |      1. get_body_type(self: raisimpy.Object, arg0: int) -> raisimpy.BodyType
+ |      
+ |      2. get_body_type(self: raisimpy.Object) -> raisimpy.BodyType
+ |  
+ |  get_contacts(...)
+ |      get_contacts(*args, **kwargs)
+ |      Overloaded function.
+ |      
+ |      1. get_contacts(self: raisimpy.Object) -> List[raisimpy.contact.Contact]
+ |      
+ |      
+ |                  Get the list of contact points.
+ |      
+ |                  Returns:
+ |                      list[Contact]: list of contact points.
+ |                  
+ |      
+ |      2. get_contacts(self: raisimpy.Object) -> List[raisimpy.contact.Contact]
+ |      
+ |      
+ |                  Get the list of contact points.
+ |      
+ |                  Returns:
+ |                      list[Contact]: list of contact points.
+ |  
+ |  get_index_in_world(...)
+ |      get_index_in_world(self: raisimpy.Object) -> int
+ |      
+ |      
+ |      Get the object index in the world.
+ |      
+ |      Returns:
+ |          int: object index in the world.
+ |  
+ |  get_name(...)
+ |      get_name(self: raisimpy.Object) -> str
+ |      
+ |      
+ |      Get the object's name.
+ |      
+ |      Returns:
+ |          str: object's name.
+ |  
+ |  get_world_linear_velocity(...)
+ |      get_world_linear_velocity(self: raisimpy.Object, local_idx: int) -> numpy.ndarray[float64]
+ |      
+ |      
+ |      Get the world linear velocity.
+ |      
+ |      Args:
+ |          local_idx (int): local index.
+ |      
+ |      Returns:
+ |          np.array[float[3]]: linear velocity expressed in the Cartesian world frame.
+ |  
+ |  set_index_in_world(...)
+ |      set_index_in_world(self: raisimpy.Object, index: int) -> None
+ |      
+ |      
+ |      Set the object index in the world.
+ |      
+ |      Args:
+ |          index (int): object index.
+ |  
+ |  set_name(...)
+ |      set_name(self: raisimpy.Object, name: str) -> None
+ |      
+ |      
+ |      Set the object's name.
+ |      
+ |      Args:
+ |          name (str): object's name.
+ |  
+ |  ----------------------------------------------------------------------
+ |  Data descriptors inherited from Object:
+ |  
+ |  name
+ |  
+ |  ----------------------------------------------------------------------
+ |  Methods inherited from pybind11_builtins.pybind11_object:
+ |  
+ |  __new__(*args, **kwargs) from pybind11_builtins.pybind11_type
+ |      Create and return a new object.  See help(type) for accurate signature.
+

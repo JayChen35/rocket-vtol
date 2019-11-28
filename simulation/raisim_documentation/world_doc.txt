@@ -1,0 +1,545 @@
+Help on World in module raisimpy object:
+
+class World(pybind11_builtins.pybind11_object)
+ |  Raisim world.
+ |  
+ |  Method resolution order:
+ |      World
+ |      pybind11_builtins.pybind11_object
+ |      builtins.object
+ |  
+ |  Methods defined here:
+ |  
+ |  __init__(...)
+ |      __init__(*args, **kwargs)
+ |      Overloaded function.
+ |      
+ |      1. __init__(self: raisimpy.World) -> None
+ |      
+ |      Initialize the World.
+ |      
+ |      2. __init__(self: raisimpy.World, configFile: str) -> None
+ |      
+ |      Initialize the World from the given config file.
+ |  
+ |  add_articulated_system(...)
+ |      add_articulated_system(self: raisimpy.World, urdf_path: str, res_path: str = '', joint_order: List[str] = [], collision_group: int = 1, collision_mask: int = 18446744073709551615, options: raisimpy.ArticulatedSystemOption = <raisimpy.ArticulatedSystemOption object at 0x7f9e6ad4e7d8>) -> raisimpy.ArticulatedSystem
+ |      
+ |      
+ |      Add an articulated system in the world.
+ |      
+ |      Args:
+ |      urdf_path (str): path to the URDF file.
+ |      res_path (str): path to the resource directory. Leave it empty ('') if it is the urdf file directory.
+ |      joint_order (list[str]): joint order.
+ |      group (CollisionGroup): collision group.
+ |      mask (CollisionGroup): collision mask.
+ |      options (ArticulatedSystemOption): articulated system options.
+ |      
+ |      Returns:
+ |          ArticulatedSystem: the articulated system instance.
+ |  
+ |  add_box(...)
+ |      add_box(self: raisimpy.World, x: float, y: float, z: float, mass: float, material: str = 'default', collision_group: int = 1, collision_mask: int = 18446744073709551615) -> raisimpy.Box
+ |      
+ |      
+ |      Add dynamically a box into the world.
+ |      
+ |      Args:
+ |          x (float): length along the x axis.
+ |          y (float): length along the y axis.
+ |          z (float): length along the z axis.
+ |          mass (float): mass of the box.
+ |          material (str): material to be applied to the box.
+ |          collision_group (unsigned long): collision group.
+ |          collision_mask (unsigned long): collision mask.
+ |      
+ |      Returns:
+ |          Box: the box instance.
+ |  
+ |  add_capsule(...)
+ |      add_capsule(self: raisimpy.World, radius: float, height: float, mass: float, material: str = 'default', collision_group: int = 1, collision_mask: int = 18446744073709551615) -> raisimpy.Capsule
+ |      
+ |      
+ |      Add dynamically a capsule into the world.
+ |      
+ |      Args:
+ |          radius (float): radius of the capsule.
+ |          height (float): height of the capsule.
+ |          mass (float): mass of the capsule.
+ |          material (str): material to be applied to the capsule.
+ |          collision_group (unsigned long): collision group.
+ |          collision_mask (unsigned long): collision mask.
+ |      
+ |      Returns:
+ |          Capsule: the capsule instance.
+ |  
+ |  add_compliant_wire(...)
+ |      add_compliant_wire(self: raisimpy.World, object1: raisimpy.Object, local_idx1: int, pos_body1: numpy.ndarray[float64], object2: raisimpy.Object, local_idx2: int, pos_body2: numpy.ndarray[float64], length: float, stiffness: float) -> raisimpy.constraints.CompliantWire
+ |      
+ |      
+ |      Add a compliant wire constraint between two bodies in the world.
+ |      
+ |      Args:
+ |      object1 (Object): first object/body instance.
+ |          local_idx1 (int): local index of the first object/body.
+ |          pos_body1 (np.array[float[3]]): position of the constraint on the first body.
+ |      object2 (Object): second object/body instance.
+ |          local_idx2 (int): local index of the second object/body.
+ |          pos_body2 (np.array[float[3]]): position of the constraint on the second body.
+ |      length (float): length of the wire constraint.
+ |      stiffness (float): stiffness of the wire.
+ |      
+ |      Returns:
+ |          CompliantWire: the compliant wire constraint instance.
+ |  
+ |  add_compound(...)
+ |      add_compound(self: raisimpy.World, children: List[raisimpy.Compound.CompoundObjectChild], mass: float = '', inertia: numpy.ndarray[float64], collision_group: int = 1, collision_mask: int = 18446744073709551615) -> raisimpy.Compound
+ |      
+ |      
+ |      Add a compound body in the world.
+ |      
+ |      Args:
+ |      children (list[CompoundObjectChild]): list of child object instance.
+ |      mass (float): mass of the compound object.
+ |      inertia (np.array[float[3,3]]): inertia matrix of the object.
+ |      group (CollisionGroup): collision group.
+ |      mask (CollisionGroup): collision mask.
+ |      
+ |      Returns:
+ |          Compound: the compound body instance.
+ |  
+ |  add_cone(...)
+ |      add_cone(self: raisimpy.World, radius: float, height: float, mass: float, material: str = 'default', collision_group: int = 1, collision_mask: int = 18446744073709551615) -> raisimpy.Cone
+ |      
+ |      
+ |      Add dynamically a cone into the world.
+ |      
+ |      Args:
+ |          radius (float): radius of the cone.
+ |          height (float): height of the cone.
+ |          mass (float): mass of the cone.
+ |          material (str): material to be applied to the cone.
+ |          collision_group (unsigned long): collision group.
+ |          collision_mask (unsigned long): collision mask.
+ |      
+ |      Returns:
+ |          Cone: the cone instance.
+ |  
+ |  add_cylinder(...)
+ |      add_cylinder(self: raisimpy.World, radius: float, height: float, mass: float, material: str = 'default', collision_group: int = 1, collision_mask: int = 18446744073709551615) -> raisimpy.Cylinder
+ |      
+ |      
+ |      Add dynamically a cylinder into the world.
+ |      
+ |      Args:
+ |          radius (float): radius of the cylinder.
+ |          height (float): height of the cylinder.
+ |          mass (float): mass of the cylinder.
+ |          material (str): material to be applied to the cylinder.
+ |          collision_group (unsigned long): collision group.
+ |          collision_mask (unsigned long): collision mask.
+ |      
+ |      Returns:
+ |          Cylinder: the cylinder instance.
+ |  
+ |  add_ground(...)
+ |      add_ground(self: raisimpy.World, height: float = 0.0, material: str = 'default', collision_mask: int = 18446744073709551615) -> raisimpy.Ground
+ |      
+ |      
+ |      Add dynamically a ground into the world.
+ |      
+ |      Args:
+ |          height (float): height of the ground.
+ |          material (str): material to be applied to the ground.
+ |          collision_mask (unsigned long): collision mask.
+ |      
+ |      Returns:
+ |          Ground: the ground instance.
+ |  
+ |  add_heightmap(...)
+ |      add_heightmap(*args, **kwargs)
+ |      Overloaded function.
+ |      
+ |      1. add_heightmap(self: raisimpy.World, x_samples: int, y_samples: int, x_scale: float, y_scale: float, x_center: float, y_center: float, heights: List[float], material: str = 'default', collision_group: int = 1, collision_mask: int = 18446744073709551615) -> raisimpy.HeightMap
+ |      
+ |      
+ |                  Add a heightmap into the world.
+ |      
+ |                  Args:
+ |                      x_samples (int): the number of samples in x.
+ |                      y_samples (int): the number of samples in y.
+ |                  x_scale (float): the scale in the x direction.
+ |                  y_scale (float): the scale in the y direction.
+ |                  x_center (float): the x center of the heightmap in the world.
+ |                  y_center (float): the y center of the heightmap in the world.
+ |                  heights (list[float]): list of desired heights.
+ |                  material (str): material.
+ |                  group (CollisionGroup): collision group.
+ |                  mask (CollisionGroup): collision mask.
+ |      
+ |                  Returns:
+ |                      HeightMap: the heightmap instance.
+ |                  
+ |      
+ |      2. add_heightmap(self: raisimpy.World, filename: str, x_center: float, y_center: float, material: str = 'default', collision_group: int = 1, collision_mask: int = 18446744073709551615) -> raisimpy.HeightMap
+ |      
+ |      
+ |                  Add a heightmap into the world.
+ |      
+ |                  Args:
+ |                      filename (str): raisim heightmap filename.
+ |                  x_center (float): the x center of the heightmap in the world.
+ |                  y_center (float): the y center of the heightmap in the world.
+ |                  material (str): material.
+ |                  group (CollisionGroup): collision group.
+ |                  mask (CollisionGroup): collision mask.
+ |      
+ |                  Returns:
+ |                      HeightMap: the heightmap instance.
+ |                  
+ |      
+ |      3. add_heightmap(self: raisimpy.World, filename: str, x_center: float, y_center: float, x_size: float, y_size: float, height_scale: float, height_offset: float, material: str = 'default', collision_group: int = 1, collision_mask: int = 18446744073709551615) -> raisimpy.HeightMap
+ |      
+ |      
+ |                  Add a heightmap into the world.
+ |      
+ |                  Args:
+ |                      filename (str): filename to the PNG.
+ |                      x_center (float): the x center of the heightmap in the world.
+ |                  y_center (float): the y center of the heightmap in the world.
+ |                  x_size (float): the size in the x direction.
+ |                  y_size (float): the size in the y direction.
+ |                      height_scale (float): the height scale.
+ |                      height_offset (float): the height offset.
+ |                  material (str): material.
+ |                  group (CollisionGroup): collision group.
+ |                  mask (CollisionGroup): collision mask.
+ |      
+ |                  Returns:
+ |                      HeightMap: the heightmap instance.
+ |                  
+ |      
+ |      4. add_heightmap(self: raisimpy.World, x_center: float, y_center: float, terrain_properties: raisimpy.TerrainProperties, material: str = 'default', collision_group: int = 1, collision_mask: int = 18446744073709551615) -> raisimpy.HeightMap
+ |      
+ |      
+ |                  Add a heightmap into the world.
+ |      
+ |                  Args:
+ |                  x_center (float): the x center of the heightmap in the world.
+ |                  y_center (float): the y center of the heightmap in the world.
+ |                  terrain_properties (TerrainProperties): the terrain properties.
+ |                  material (str): material.
+ |                  group (CollisionGroup): collision group.
+ |                  mask (CollisionGroup): collision mask.
+ |      
+ |                  Returns:
+ |                      HeightMap: the heightmap instance.
+ |  
+ |  add_mesh(...)
+ |      add_mesh(self: raisimpy.World, file_name: str, mass: float, inertia: numpy.ndarray[float64], com: numpy.ndarray[float64], scale: float = 1.0, material: str = 'default', collision_group: int = 1, collision_mask: int = 18446744073709551615) -> raisimpy.Mesh
+ |      
+ |      
+ |      Add a mesh in the world.
+ |      
+ |      Args:
+ |      file_name (str): full path of the mesh file.
+ |      mass (float): mass of the compound object.
+ |      inertia (np.array[float[3,3]]): inertia matrix of the object.
+ |      com (np.array[float[3,1]]): the location of the center of mass
+ |      material (str): material
+ |      group (CollisionGroup): collision group.
+ |      mask (CollisionGroup): collision mask.
+ |      
+ |      Returns:
+ |          Mesh: the mesh instance.
+ |  
+ |  add_sphere(...)
+ |      add_sphere(self: raisimpy.World, radius: float, mass: float, material: str = 'default', collision_group: int = 1, collision_mask: int = 18446744073709551615) -> raisimpy.Sphere
+ |      
+ |      
+ |      Add dynamically a sphere into the world.
+ |      
+ |      Args:
+ |          radius (float): radius of the sphere.
+ |          mass (float): mass of the sphere.
+ |          material (str): material to be applied to the sphere.
+ |          collision_group (unsigned long): collision group.
+ |          collision_mask (unsigned long): collision mask.
+ |      
+ |      Returns:
+ |          Sphere: the sphere instance.
+ |  
+ |  add_stiff_wire(...)
+ |      add_stiff_wire(self: raisimpy.World, object1: raisimpy.Object, local_idx1: int, pos_body1: numpy.ndarray[float64], object2: raisimpy.Object, local_idx2: int, pos_body2: numpy.ndarray[float64], length: float) -> raisimpy.constraints.StiffWire
+ |      
+ |      
+ |      Add a stiff wire constraint between two bodies in the world.
+ |      
+ |      Args:
+ |      object1 (Object): first object/body instance.
+ |          local_idx1 (int): local index of the first object/body.
+ |          pos_body1 (np.array[float[3]]): position of the constraint on the first body.
+ |      object2 (Object): second object/body instance.
+ |          local_idx2 (int): local index of the second object/body.
+ |          pos_body2 (np.array[float[3]]): position of the constraint on the second body.
+ |      length (float): length of the wire constraint.
+ |      
+ |      Returns:
+ |          StiffWire: the stiff wire constraint instance.
+ |  
+ |  get_configuration_number(...)
+ |      get_configuration_number(self: raisimpy.World) -> int
+ |      
+ |      
+ |      Get the number of elements that are in the world. The returned number is updated everytime that we add or
+ |      remove an object from the world.
+ |      
+ |      Returns:
+ |          int: the number of objects in the world.
+ |  
+ |  get_constraint(...)
+ |      get_constraint(self: raisimpy.World, name: str) -> raisimpy.constraints.Constraints
+ |      
+ |      
+ |      Get the specified constraint instance from its unique name.
+ |      
+ |      Args:
+ |      name (str): unique name of the constraint instance we want to get.
+ |      
+ |      Returns:
+ |          Constraints, None: the specified constraint instance. None, if it didn't find the constraint.
+ |  
+ |  get_contact_problems(...)
+ |      get_contact_problems(self: raisimpy.World) -> List[raisimpy.contact.Single3DContactProblem]
+ |      
+ |      
+ |      Return the list of contacts.
+ |  
+ |  get_contact_solver(...)
+ |      get_contact_solver(self: raisimpy.World) -> raisimpy.contact.BisectionContactSolver
+ |      
+ |      
+ |      Return the bisection contact solver used.
+ |      
+ |      Returns:
+ |          BisectionContactSolver: contact solver.
+ |  
+ |  get_gravity(...)
+ |      get_gravity(self: raisimpy.World) -> numpy.ndarray[float64]
+ |      
+ |      
+ |      Get the gravity vector from the world.
+ |      
+ |      Returns:
+ |          np.array[float[3]]: gravity vector.
+ |  
+ |  get_object(...)
+ |      get_object(*args, **kwargs)
+ |      Overloaded function.
+ |      
+ |      1. get_object(self: raisimpy.World, name: str) -> raisimpy.Object
+ |      
+ |      
+ |                  Get the specified object instance from its unique name.
+ |      
+ |                  Args:
+ |                  name (str): unique name of the object instance we want to get.
+ |      
+ |                  Returns:
+ |                      Object, None: the specified object instance. None, if it didn't find the object.
+ |                  
+ |      
+ |      2. get_object(self: raisimpy.World, world_index: int) -> raisimpy.Object
+ |      
+ |      
+ |                  Get the specified object instance from its unique name.
+ |      
+ |                  Args:
+ |                  name (str): unique name of the object instance we want to get.
+ |      
+ |                  Returns:
+ |                      Object, None: the specified object instance. None, if it didn't find the object.
+ |  
+ |  get_object_list(...)
+ |      get_object_list(self: raisimpy.World) -> List[raisimpy.Object]
+ |      
+ |      
+ |      Return the list of object instances that are in the world.
+ |      
+ |      Returns:
+ |          list[Object]: list of object instances.
+ |  
+ |  get_time_step(...)
+ |      get_time_step(self: raisimpy.World) -> float
+ |      
+ |      
+ |      Get the current time step that has been set in the simulator.
+ |      
+ |      Returns:
+ |          float: time step.
+ |  
+ |  get_wire(...)
+ |      get_wire(self: raisimpy.World, name: str) -> raisimpy.constraints.Wire
+ |      
+ |      
+ |      Get the specified wire instance from its unique name.
+ |      
+ |      Args:
+ |      name (str): unique name of the wire instance we want to get.
+ |      
+ |      Returns:
+ |          Constraints: the specified wire instance. None, if it didn't find the wire.
+ |  
+ |  get_world_time(...)
+ |      get_world_time(self: raisimpy.World) -> float
+ |      
+ |      
+ |      Return the total integrated time (which is updated at every `integrate2()`` call).
+ |      
+ |      Returns:
+ |          float: world time.
+ |  
+ |  integrate(...)
+ |      integrate(self: raisimpy.World) -> None
+ |      
+ |      this function is simply calling both `integrate1()` and `integrate2()` one-by-one.
+ |  
+ |  integrate1(...)
+ |      integrate1(self: raisimpy.World) -> None
+ |      
+ |      
+ |      It performs:
+ |      1. deletion contacts from previous time step
+ |      2. collision detection
+ |      3. register contacts to each body
+ |      4. calls `preContactSolverUpdate1()` of each object
+ |  
+ |  integrate2(...)
+ |      integrate2(self: raisimpy.World) -> None
+ |      
+ |      
+ |      It performs
+ |      1. calls `preContactSolverUpdate2()` of each body
+ |      2. run collision solver
+ |      3. calls `integrate` method of each object
+ |  
+ |  remove_object(...)
+ |      remove_object(*args, **kwargs)
+ |      Overloaded function.
+ |      
+ |      1. remove_object(self: raisimpy.World, obj: raisimpy.Object) -> None
+ |      
+ |      
+ |                  Remove dynamically an object from the world.
+ |      
+ |                  Args:
+ |                      obj (Object): the object to be removed from the world.
+ |                  
+ |      
+ |      2. remove_object(self: raisimpy.World, wire: raisimpy.constraints.StiffWire) -> None
+ |      
+ |      
+ |                  Remove dynamically a stiff wire from the world.
+ |      
+ |                  Args:
+ |                      wire (StiffWire): the stiff wire to be removed from the world.
+ |                  
+ |      
+ |      3. remove_object(self: raisimpy.World, wire: raisimpy.constraints.CompliantWire) -> None
+ |      
+ |      
+ |                  Remove dynamically a compliant wire from the world.
+ |      
+ |                  Args:
+ |                      wire (CompliantWire): the compliant wire to be removed from the world.
+ |  
+ |  set_contact_solver_parameters(...)
+ |      set_contact_solver_parameters(self: raisimpy.World, alpha_init: float, alpha_min: float, alpha_decay: float, max_iters: int, threshold: float) -> None
+ |      
+ |      
+ |      Set contact solver parameters.
+ |      
+ |      Args:
+ |          alpha_init (float): alpha init.
+ |          alpha_min (float): alpha minimum.
+ |          alpha_decay (float): alpha decay.
+ |          max_iters (float): maximum number of iterations.
+ |          threshold (float): threshold.
+ |  
+ |  set_default_material(...)
+ |      set_default_material(self: raisimpy.World, friction: float, restitution: float, threshold: float) -> None
+ |      
+ |      
+ |      Set the default material.
+ |      
+ |      Args:
+ |          friction (float): coefficient of friction.
+ |          restitution (float): coefficient of restitution.
+ |          threshold (float): restitution threshold.
+ |  
+ |  set_erp(...)
+ |      set_erp(self: raisimpy.World, erp: float, erp2: float = 0) -> None
+ |      
+ |      Set the error reduction parameter (ERP).
+ |  
+ |  set_gravity(...)
+ |      set_gravity(self: raisimpy.World, gravity: numpy.ndarray[float64]) -> None
+ |      
+ |      
+ |      Set the gravity vector in the world.
+ |      
+ |      Args:
+ |          np.array[float[3]]: gravity vector.
+ |  
+ |  set_material_pair_properties(...)
+ |      set_material_pair_properties(self: raisimpy.World, material1: str, material2: str, friction: float, restitution: float, threshold: float) -> None
+ |      
+ |      
+ |      Set material pair properties.
+ |      
+ |      Args:
+ |          material1 (str): first material.
+ |          material2 (str): second material.
+ |          friction (float): coefficient of friction.
+ |          restitution (float): coefficient of restitution.
+ |          threshold (float): restitution threshold.
+ |  
+ |  set_time_step(...)
+ |      set_time_step(self: raisimpy.World, dt: float) -> None
+ |      
+ |      
+ |      Set the given time step `dt` in the simulator.
+ |      
+ |      Args:
+ |          dt (float): time step to be set in the simulator.
+ |  
+ |  set_world_time(...)
+ |      set_world_time(self: raisimpy.World, time: float) -> None
+ |      
+ |      
+ |      Set the world time.
+ |      
+ |      Args:
+ |          time (float): world time
+ |  
+ |  update_material_property(...)
+ |      update_material_property(self: raisimpy.World, prop: raisimpy.MaterialManager) -> None
+ |      
+ |      
+ |      Update material property.
+ |      
+ |      Args:
+ |          prop (MaterialManager): material manager property instance.
+ |  
+ |  ----------------------------------------------------------------------
+ |  Data descriptors defined here:
+ |  
+ |  __dict__
+ |  
+ |  ----------------------------------------------------------------------
+ |  Methods inherited from pybind11_builtins.pybind11_object:
+ |  
+ |  __new__(*args, **kwargs) from pybind11_builtins.pybind11_type
+ |      Create and return a new object.  See help(type) for accurate signature.
+
