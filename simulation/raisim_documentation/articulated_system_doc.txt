@@ -1,0 +1,1225 @@
+Help on class ArticulatedSystem in module raisimpy:
+
+class ArticulatedSystem(Object)
+ |  Raisim Articulated System.
+ |  
+ |  Method resolution order:
+ |      ArticulatedSystem
+ |      Object
+ |      pybind11_builtins.pybind11_object
+ |      builtins.object
+ |  
+ |  Methods defined here:
+ |  
+ |  __init__(...)
+ |      __init__(*args, **kwargs)
+ |      Overloaded function.
+ |      
+ |      1. __init__(self: raisimpy.ArticulatedSystem) -> None
+ |      
+ |      Initialize the Articulated System.
+ |      
+ |      2. __init__(self: raisimpy.ArticulatedSystem, filename: str, resource_directory: str, joint_order: List[str], options: raisimpy.ArticulatedSystemOption) -> None
+ |      
+ |      Initialize the Articulated System.
+ |      
+ |      Do not call this method yourself. use World class to create an Articulated system.
+ |      
+ |      Args:
+ |          filename (str): path to the robot description file (URDF, etc).
+ |          resource_directory (str): path the resource directory. If empty, it will use the robot description folder.
+ |          joint_order (list[str]): specify the joint order, if we want it to be different from the URDF file.
+ |          options (ArticulatedSystemOption): options.
+ |  
+ |  compute_sparse_inverse_mass_matrix(...)
+ |      compute_sparse_inverse_mass_matrix(self: raisimpy.ArticulatedSystem, mass_matrix: numpy.ndarray[float64]) -> numpy.ndarray[float64]
+ |      
+ |      
+ |      This computes the inverse mass matrix given the mass matrix. The return type is dense. It exploits the
+ |      sparsity of the mass matrix to efficiently perform the computation.
+ |      
+ |      Args:
+ |          mass_matrix (np.array[float[n,n]]): mass matrix.
+ |      
+ |      Returns:
+ |          np.array(float[n,n]): dense inverse matrix.
+ |  
+ |  get_base_orientation = get_base_quaternion(...)
+ |  
+ |  get_base_quaternion(...)
+ |      get_base_quaternion(self: raisimpy.ArticulatedSystem) -> numpy.ndarray[float64]
+ |      
+ |      
+ |      Get the base orientation (expressed as a quaternion [w,x,y,z]).
+ |      
+ |      Returns:
+ |          np.array[float[4]]: base orientation (expressed as a quaternion [w,x,y,z])
+ |  
+ |  get_base_rotation_matrix(...)
+ |      get_base_rotation_matrix(self: raisimpy.ArticulatedSystem) -> numpy.ndarray[float64]
+ |      
+ |      
+ |      Get the base orientation (expressed as a rotation matrix).
+ |      
+ |      Returns:
+ |          np.array[float[3,3]]: rotation matrix
+ |  
+ |  get_body_index(...)
+ |      get_body_index(self: raisimpy.ArticulatedSystem, name: str) -> int
+ |      
+ |      
+ |      Return the body index associated with the given name.
+ |      
+ |      Args:
+ |          name (str): body name.
+ |      
+ |      Returns:
+ |          int: body index.
+ |  
+ |  get_body_names(...)
+ |      get_body_names(self: raisimpy.ArticulatedSystem) -> List[str]
+ |      
+ |      
+ |      Return the body names.
+ |      
+ |      Returns:
+ |          list[str]: list of body names.
+ |  
+ |  get_body_pose(...)
+ |      get_body_pose(self: raisimpy.ArticulatedSystem, body_id: int) -> numpy.ndarray[float64]
+ |      
+ |      
+ |      Return the body pose (position and orientation (expressed as a quaternion)).
+ |      
+ |      Args:
+ |          body_id (int): body id.
+ |      
+ |      Returns:
+ |          np.array[float[3]]: body position.
+ |          np.array[float[4]]: body orientation (expressed as a quaternion [w,x,y,z])
+ |  
+ |  get_body_pose1(...)
+ |      get_body_pose1(self: raisimpy.ArticulatedSystem, body_id: int) -> numpy.ndarray[float64]
+ |      
+ |      
+ |      Return the body pose (position and orientation (expressed as a rotation matrix)).
+ |      
+ |      Args:
+ |          body_id (int): body id.
+ |      
+ |      Returns:
+ |          np.array[float[3]]: body position.
+ |          np.array[float[3,3]]: body orientation (expressed as a rotation matrix)
+ |  
+ |  get_composite_com(...)
+ |      get_composite_com(self: raisimpy.ArticulatedSystem) -> numpy.ndarray[float64]
+ |      
+ |      
+ |      Get the composite center of mass position (i.e. the center of mass of the whole system).
+ |      
+ |      Returns:
+ |          np.array[float[3]]: center of mass position.
+ |  
+ |  get_composite_inertia(...)
+ |      get_composite_inertia(self: raisimpy.ArticulatedSystem) -> numpy.ndarray[float64]
+ |      
+ |      
+ |      Get the composite moment of inertia of the whole system.
+ |      
+ |      Returns:
+ |          np.array[float[3, 3]]: moment inertia of the whole system.
+ |  
+ |  get_control_mode(...)
+ |      get_control_mode(self: raisimpy.ArticulatedSystem) -> raisimpy.ControlMode
+ |      
+ |      
+ |      Get the control mode.
+ |      
+ |      Returns:
+ |          ControlMode.Type: control mode type which is one of {FORCE_AND_TORQUE, PD_PLUS_FEEDFORWARD_TORQUE,
+ |              VELOCITY_PLUS_FEEDFORWARD_TORQUE}
+ |  
+ |  get_dense_linear_jacobian(...)
+ |      get_dense_linear_jacobian(self: raisimpy.ArticulatedSystem, body_idx: int, world_point: numpy.ndarray[float64]) -> numpy.ndarray[float64[m, n]]
+ |      
+ |      
+ |      Get the dense linear jacobian.
+ |      
+ |      .. math:: v_{lin} = J(q) \dot{q}
+ |      
+ |      Args:
+ |          body_idx (int): body index.
+ |          world_point (np.array[float[3]]): 3d point expressed in the world frame.
+ |      
+ |      Returns:
+ |          np.array[float[3, n]]: dense linear jacobian.
+ |  
+ |  get_dense_rotational_jacobian(...)
+ |      get_dense_rotational_jacobian(self: raisimpy.ArticulatedSystem, body_idx: int) -> numpy.ndarray[float64[m, n]]
+ |      
+ |      
+ |      Get the dense rotational jacobian.
+ |      
+ |      .. math:: \omega = J(q) \dot{q}
+ |      
+ |      Args:
+ |          body_idx (int): body index.
+ |      
+ |      Returns:
+ |          np.array[float[3, n]]: dense rotational jacobian.
+ |  
+ |  get_dof(...)
+ |      get_dof(self: raisimpy.ArticulatedSystem) -> int
+ |      
+ |      
+ |      Return the number of degrees of freedom.
+ |      
+ |      Returns:
+ |          int: the number of degrees of freedom.
+ |  
+ |  get_energy(...)
+ |      get_energy(self: raisimpy.ArticulatedSystem, gravity: numpy.ndarray[float64]) -> float
+ |      
+ |      
+ |      Get the system's total energy.
+ |      
+ |      Args:
+ |          gravity (np.array[float[3]]): gravity vector.
+ |      
+ |      Returns:
+ |          float: total energy.
+ |  
+ |  get_feedforward_generalized_forces(...)
+ |      get_feedforward_generalized_forces(self: raisimpy.ArticulatedSystem) -> numpy.ndarray[float64]
+ |      
+ |      
+ |      Get the feedforward generalized forces.
+ |      
+ |      Returns:
+ |          np.array[float[n]]: feedforward generalized forces.
+ |  
+ |  get_frame_angular_velocity(...)
+ |      get_frame_angular_velocity(self: raisimpy.ArticulatedSystem, frame_id: int) -> numpy.ndarray[float64]
+ |      
+ |      
+ |      Get the frame angular velocity expressed in the Cartesian world frame.
+ |      
+ |      Args:
+ |          frame_id (int): frame id.
+ |      
+ |      Returns:
+ |          np.array[float[3]]: the coordinate frame angular velocity in the world space.
+ |  
+ |  get_frame_by_idx(...)
+ |      get_frame_by_idx(self: raisimpy.ArticulatedSystem, idx: int) -> raisimpy.CoordinateFrame
+ |      
+ |      
+ |      Get the coordinate frame from its index.
+ |      
+ |      Args:
+ |          idx (int): index of the frame.
+ |      
+ |      Returns:
+ |          CoordinateFrame: the coordinate frame.
+ |  
+ |  get_frame_by_name(...)
+ |      get_frame_by_name(self: raisimpy.ArticulatedSystem, name: str) -> raisimpy.CoordinateFrame
+ |      
+ |      
+ |      Get the coordinate frame from its name.
+ |      
+ |      Args:
+ |          name (str): name of the frame.
+ |      
+ |      Returns:
+ |          CoordinateFrame: the coordinate frame.
+ |  
+ |  get_frame_idx_by_name(...)
+ |      get_frame_idx_by_name(self: raisimpy.ArticulatedSystem, name: str) -> int
+ |      
+ |      
+ |      Get the coordinate frame index from its name.
+ |      
+ |      Args:
+ |          name (str): name of the frame.
+ |      
+ |      Returns:
+ |          int: the corresponding index.
+ |  
+ |  get_frame_linear_velocity(...)
+ |      get_frame_linear_velocity(self: raisimpy.ArticulatedSystem, frame_id: int) -> numpy.ndarray[float64]
+ |      
+ |      
+ |      Get the frame linear velocity expressed in the Cartesian world frame.
+ |      
+ |      Args:
+ |          frame_id (int): frame id.
+ |      
+ |      Returns:
+ |          np.array[float[3]]: the coordinate frame linear velocity in the world space.
+ |  
+ |  get_frame_world_orientation = get_frame_world_quaternion(...)
+ |  
+ |  get_frame_world_position(...)
+ |      get_frame_world_position(self: raisimpy.ArticulatedSystem, frame_id: int) -> numpy.ndarray[float64]
+ |      
+ |      
+ |      Get the frame position expressed in the Cartesian world frame.
+ |      
+ |      Args:
+ |          frame_id (int): frame id.
+ |      
+ |      Returns:
+ |          np.array[float[3]]: the coordinate frame position in the world space.
+ |  
+ |  get_frame_world_quaternion(...)
+ |      get_frame_world_quaternion(self: raisimpy.ArticulatedSystem, frame_id: int) -> numpy.ndarray[float64]
+ |      
+ |      
+ |      Get the frame orientation as a quaternion ([w,x,y,z]) expressed in the Cartesian world frame.
+ |      
+ |      Args:
+ |          frame_id (int): frame id.
+ |      
+ |      Returns:
+ |          np.array[float[3,3]]: the coordinate frame orientation (quaternion) in the world space.
+ |  
+ |  get_frame_world_rotation_matrix(...)
+ |      get_frame_world_rotation_matrix(self: raisimpy.ArticulatedSystem, frame_id: int) -> numpy.ndarray[float64]
+ |      
+ |      
+ |      Get the frame orientation as a rotation matrix expressed in the Cartesian world frame
+ |      
+ |      Args:
+ |          frame_id (int): frame id.
+ |      
+ |      Returns:
+ |          np.array[float[3,3]]: the coordinate frame orientation in the world space.
+ |  
+ |  get_frames(...)
+ |      get_frames(self: raisimpy.ArticulatedSystem) -> List[raisimpy.CoordinateFrame]
+ |      
+ |      
+ |      Get all the coordinate frames.
+ |      
+ |      Returns:
+ |          list[CoordinateFrame]: the coordinate frames.
+ |  
+ |  get_generalized_coordinate_dim(...)
+ |      get_generalized_coordinate_dim(self: raisimpy.ArticulatedSystem) -> int
+ |      
+ |      
+ |      Return the dimension/size of the generalized coordinates vector.
+ |      
+ |      Returns:
+ |          int: the number of generalized coordinates.
+ |  
+ |  get_generalized_coordinates(...)
+ |      get_generalized_coordinates(self: raisimpy.ArticulatedSystem) -> numpy.ndarray[float64]
+ |      
+ |      
+ |      Get the generalized coordinates of the system.
+ |      
+ |      The dimension of the returned vector is equal to the number of degrees of freedom that each joint provides.
+ |      A floating joint provides 6 DoFs (3 linear + 3 revolute), a prismatic/revolute joint 1 DoF, a fixed joint 0
+ |      DoF, etc.
+ |      
+ |      Returns:
+ |          np.array[float[n]]: generalized coordinates.
+ |  
+ |  get_generalized_forces(...)
+ |      get_generalized_forces(self: raisimpy.ArticulatedSystem) -> numpy.ndarray[float64]
+ |      
+ |      
+ |      Get the generalized forces.
+ |      
+ |      Returns:
+ |          np.array[float[n]]: generalized forces.
+ |  
+ |  get_generalized_momentum(...)
+ |      get_generalized_momentum(self: raisimpy.ArticulatedSystem) -> numpy.ndarray[float64]
+ |      
+ |      
+ |      Get the generalized momentum which is simply the mass matrix multiplied by the generalized velocities:
+ |      
+ |      .. math:: H(q) \dot{q}
+ |      
+ |      where :math:`H(q)` is the mass/inertia matrix, and :math:`\dot{q}` are the generalized velocities.
+ |      
+ |      Returns:
+ |          np.array[float[n]]: generalized momentum.
+ |  
+ |  get_generalized_velocities(...)
+ |      get_generalized_velocities(self: raisimpy.ArticulatedSystem) -> numpy.ndarray[float64]
+ |      
+ |      
+ |      Get the generalized velocities of the system.
+ |      
+ |      The dimension of the returned vector is equal to the number of degrees of freedom that each joint provides.
+ |      A floating joint provides 6 DoFs (3 linear + 3 revolute), a prismatic/revolute joint 1 DoF, a fixed joint 0
+ |      DoF, etc.
+ |      
+ |      Returns:
+ |          np.array[float[n]]: generalized velocities.
+ |  
+ |  get_inertias(...)
+ |      get_inertias(self: raisimpy.ArticulatedSystem) -> list
+ |      
+ |      
+ |      Return the inertias (one for each body).
+ |      
+ |      Returns:
+ |          list[np.array[float[3,3]]]: inertias.
+ |  
+ |  get_inverse_mass_matrix(...)
+ |      get_inverse_mass_matrix(self: raisimpy.ArticulatedSystem) -> numpy.ndarray[float64]
+ |      
+ |      
+ |      Get the inverse of the mass (inertia) matrix, where the inertia matrix appears in the dynamic equation of motion:
+ |      
+ |      .. math:: H(q) \ddot{q} + N(q, \dot{q}) = \tau
+ |      
+ |      where :math:`H(q)` is the mass inertia matrix, :math:`N(q, \dot{q})` are the non-linear terms, and
+ |      :math:`\tau` are the forces/torques.
+ |      
+ |      Returns:
+ |          np.array[float[n,n]]: inverse of the mass inertia matrix.
+ |  
+ |  get_joint_cartesian_positions(...)
+ |      get_joint_cartesian_positions(self: raisimpy.ArticulatedSystem) -> list
+ |      
+ |      
+ |      Return the joint Cartesian positions relative to their parent frame.
+ |      
+ |      Returns:
+ |          list[np.array[float[3]]]: joint cartesian positions (relative to their parent frame).
+ |  
+ |  get_kinetic_energy(...)
+ |      get_kinetic_energy(self: raisimpy.ArticulatedSystem) -> float
+ |      
+ |      Return the total kinetic energy of the whole system.
+ |  
+ |  get_linear_momentum(...)
+ |      get_linear_momentum(self: raisimpy.ArticulatedSystem) -> numpy.ndarray[float64]
+ |      
+ |      
+ |      Get the linear momentum of the whole system in Cartesian space.
+ |      
+ |      Returns:
+ |          np.array[float[3]]: total linear momentum.
+ |  
+ |  get_link_coms(...)
+ |      get_link_coms(self: raisimpy.ArticulatedSystem) -> list
+ |      
+ |      
+ |      Return the center of mass of each link (expressed in their body frame).
+ |      
+ |      Returns:
+ |          list[np.array[float[3]]]: center of mass of each link (expressed in the body frame).
+ |  
+ |  get_mass(...)
+ |      get_mass(self: raisimpy.ArticulatedSystem, link_idx: int) -> float
+ |      
+ |      
+ |      Get the mass of the link.
+ |      
+ |      Args:
+ |          link_idx (int): link index.
+ |      
+ |      Returns:
+ |          float: mass value.
+ |  
+ |  get_mass_matrix(...)
+ |      get_mass_matrix(self: raisimpy.ArticulatedSystem) -> numpy.ndarray[float64]
+ |      
+ |      
+ |      Get the mass (inertia) matrix which is present in the dynamic equation of motion:
+ |      
+ |      .. math:: H(q) \ddot{q} + N(q, \dot{q}) = \tau
+ |      
+ |      where :math:`H(q)` is the mass inertia matrix, :math:`N(q, \dot{q})` are the non-linear terms, and
+ |      :math:`\tau` are the forces/torques.
+ |      
+ |      Returns:
+ |          np.array[float[n,n]]: mass inertia matrix.
+ |  
+ |  get_masses(...)
+ |      get_masses(self: raisimpy.ArticulatedSystem) -> List[float]
+ |      
+ |      
+ |      Return the body/link masses.
+ |      
+ |      Returns:
+ |          list[double]: body masses.
+ |  
+ |  get_non_linearities(...)
+ |      get_non_linearities(self: raisimpy.ArticulatedSystem) -> numpy.ndarray[float64]
+ |      
+ |      
+ |      Get the non linearity terms that are present in the dynamic equation of motion:
+ |      
+ |      .. math:: H(q) \ddot{q} + N(q, \dot{q}) = \tau
+ |      
+ |      where :math:`N(q, \dot{q})` are the non-linear terms, :math:`H(q)` is the inertia matrix, and :math:`\tau` are
+ |      the forces/torques.
+ |      
+ |      Returns:
+ |          np.array[float[n]]: non-linearity forces.
+ |  
+ |  get_num_dof(...)
+ |      get_num_dof(self: raisimpy.ArticulatedSystem) -> int
+ |      
+ |      
+ |      Return the number of degrees of freedom.
+ |      
+ |      Returns:
+ |          int: the number of degrees of freedom.
+ |  
+ |  get_options(...)
+ |      get_options(self: raisimpy.ArticulatedSystem) -> raisimpy.ArticulatedSystemOption
+ |      
+ |      
+ |      Return the options associated with the articulated system.
+ |      
+ |      Returns:
+ |          ArticulatedSystemOption: options for the articulated system.
+ |  
+ |  get_potential_energy(...)
+ |      get_potential_energy(self: raisimpy.ArticulatedSystem, gravity: numpy.ndarray[float64]) -> float
+ |      
+ |      
+ |      Get the system's potential energy due to gravity.
+ |      
+ |      Args:
+ |          gravity (np.array[float[3]]): gravity vector.
+ |      
+ |      Returns:
+ |          float: potential energy.
+ |  
+ |  get_resource_directory(...)
+ |      get_resource_directory(self: raisimpy.ArticulatedSystem) -> str
+ |      
+ |      
+ |      Get the robot resource directory.
+ |      
+ |      Returns:
+ |          str: robot resource directory.
+ |  
+ |  get_robot_description_directory_name(...)
+ |      get_robot_description_directory_name(self: raisimpy.ArticulatedSystem) -> str
+ |      
+ |      
+ |      Get the robot description top directory name.
+ |      
+ |      Returns:
+ |          str: robot description top directory name.
+ |  
+ |  get_robot_description_filename(...)
+ |      get_robot_description_filename(self: raisimpy.ArticulatedSystem) -> str
+ |      
+ |      
+ |      Get the robot description filename (e.g. path to the URDF).
+ |      
+ |      Returns:
+ |          str: robot description filename.
+ |  
+ |  get_sparse_linear_jacobian(...)
+ |      get_sparse_linear_jacobian(self: raisimpy.ArticulatedSystem, body_idx: int, world_point: numpy.ndarray[float64]) -> numpy.ndarray[float64]
+ |      
+ |      
+ |      Get the sparse linear jacobian.
+ |      
+ |      .. math:: v_{lin} = J(q) \dot{q}
+ |      
+ |      Args:
+ |          body_idx (int): body index.
+ |          world_point (np.array[float[3]]): 3d point expressed in the world frame.
+ |      
+ |      Returns:
+ |          np.array[float[3, n]]: sparse linear jacobian.
+ |  
+ |  get_sparse_linear_jacobian_time_derivative(...)
+ |      get_sparse_linear_jacobian_time_derivative(self: raisimpy.ArticulatedSystem, body_idx: int, world_point: numpy.ndarray[float64]) -> numpy.ndarray[float64]
+ |      
+ |      
+ |      Get the time derivative of the sparse linear jacobian :math:`\dot{J}(q)`.
+ |      
+ |      Args:
+ |          body_idx (int): body index.
+ |          world_point (np.array[float[3]]): 3d point expressed in the world frame.
+ |      
+ |      Returns:
+ |          np.array[float[3, n]]: time derivative of the sparse linear jacobian.
+ |  
+ |  get_sparse_rotational_jacobian(...)
+ |      get_sparse_rotational_jacobian(self: raisimpy.ArticulatedSystem, body_idx: int) -> numpy.ndarray[float64]
+ |      
+ |      
+ |      Get the sparse rotational jacobian.
+ |      
+ |      .. math:: \omega = J(q) \dot{q}
+ |      
+ |      Args:
+ |          body_idx (int): body index.
+ |      
+ |      Returns:
+ |          np.array[float[3, n]]: sparse rotational jacobian.
+ |  
+ |  get_sparse_rotational_jacobian_time_derivative(...)
+ |      get_sparse_rotational_jacobian_time_derivative(self: raisimpy.ArticulatedSystem, body_idx: int, world_point: numpy.ndarray[float64]) -> numpy.ndarray[float64]
+ |      
+ |      
+ |      Get the time derivative of the sparse rotational jacobian :math:`\dot{J}(q)`.
+ |      
+ |      Args:
+ |          body_idx (int): body index.
+ |          world_point (np.array[float[3]]): 3d point expressed in the world frame.
+ |      
+ |      Returns:
+ |          np.array[float[3, n]]: time derivative of the sparse rotational jacobian.
+ |  
+ |  get_states(...)
+ |      get_states(self: raisimpy.ArticulatedSystem) -> tuple
+ |      
+ |      
+ |      Get the joint states.
+ |      
+ |      Returns:
+ |          np.array[float[n]]: generalized coordinates.
+ |          np.array[float[n]]: generalized velocities.
+ |  
+ |  get_total_mass(...)
+ |      get_total_mass(self: raisimpy.ArticulatedSystem) -> float
+ |      
+ |      
+ |      Get the total mass of the system.
+ |      
+ |      Returns:
+ |          float: total mass value.
+ |  
+ |  get_visual_collision_object_pose(...)
+ |      get_visual_collision_object_pose(self: raisimpy.ArticulatedSystem, arg0: int) -> numpy.ndarray[float64]
+ |      
+ |      
+ |      Get the visual collision object pose (where the orientation is expressed as a quaternion).
+ |      
+ |      Args:
+ |          body_idx (int): body index.
+ |      
+ |      Returns:
+ |          np.array[float[3]]: visual object position.
+ |          np.array[float[4]]: visual object orientation (expressed as a quaternion [w,x,y,z]).
+ |  
+ |  get_visual_collision_object_pose1(...)
+ |      get_visual_collision_object_pose1(self: raisimpy.ArticulatedSystem, arg0: int) -> numpy.ndarray[float64]
+ |      
+ |      
+ |      Get the visual collision object pose (where the orientation is expressed as a rotation matrix).
+ |      
+ |      Args:
+ |          body_idx (int): body index.
+ |      
+ |      Returns:
+ |          np.array[float[3]]: visual object position.
+ |          np.array[float[3,3]]: visual object orientation (expressed as a rotation matrix).
+ |  
+ |  get_visual_collision_objects(...)
+ |      get_visual_collision_objects(self: raisimpy.ArticulatedSystem) -> List[raisim::VisObject]
+ |      
+ |      
+ |      Get the visual collision objects.
+ |      
+ |      Returns:
+ |          list[VisObject]: list of visual collision objects.
+ |  
+ |  get_visual_object_pose(...)
+ |      get_visual_object_pose(self: raisimpy.ArticulatedSystem, arg0: int) -> numpy.ndarray[float64]
+ |      
+ |      
+ |      Get the visual object pose (where the orientation is expressed as a quaternion).
+ |      
+ |      Args:
+ |          body_idx (int): body index.
+ |      
+ |      Returns:
+ |          np.array[float[3]]: visual object position.
+ |          np.array[float[4]]: visual object orientation (expressed as a quaternion [w,x,y,z]).
+ |  
+ |  get_visual_object_pose1(...)
+ |      get_visual_object_pose1(self: raisimpy.ArticulatedSystem, arg0: int) -> numpy.ndarray[float64]
+ |      
+ |      
+ |      Get the visual object pose (where the orientation is expressed as a rotation matrix).
+ |      
+ |      Args:
+ |          body_idx (int): body index.
+ |      
+ |      Returns:
+ |          np.array[float[3]]: visual object position.
+ |          np.array[float[3,3]]: visual object orientation (expressed as a rotation matrix).
+ |  
+ |  get_visual_objects(...)
+ |      get_visual_objects(self: raisimpy.ArticulatedSystem) -> List[raisim::VisObject]
+ |      
+ |      
+ |      Get the visual objects.
+ |      
+ |      Returns:
+ |          list[VisObject]: list of visual objects.
+ |  
+ |  get_world_angular_velocity(...)
+ |      get_world_angular_velocity(self: raisimpy.ArticulatedSystem, body_id: int) -> numpy.ndarray[float64]
+ |      
+ |      
+ |      Get the angular velocity of the body with respect to the world frame.
+ |      
+ |      Args:
+ |          body_id (int): body id.
+ |      
+ |      Returns:
+ |          np.array[float[3]]: angular velocity of the body expressed in the world frame.
+ |  
+ |  get_world_linear_velocity(...)
+ |      get_world_linear_velocity(*args, **kwargs)
+ |      Overloaded function.
+ |      
+ |      1. get_world_linear_velocity(self: raisimpy.ArticulatedSystem, frame_id: int) -> numpy.ndarray[float64]
+ |      
+ |      
+ |              Get the joint frame's linear velocity with respect to the world frame.
+ |      
+ |              Args:
+ |                  frame_id (int): frame id.
+ |      
+ |              Returns:
+ |                  np.array[float[3]]: velocity of the joint frame expressed in the world frame.
+ |              
+ |      
+ |      2. get_world_linear_velocity(self: raisimpy.ArticulatedSystem, sparse_linear_jacobian: numpy.ndarray[float64]) -> numpy.ndarray[float64]
+ |      
+ |      
+ |              Return the velocity of the point of the sparse linear jacobian.
+ |      
+ |              Args:
+ |                  sparse_linear_jacobian (np.array[float[3,n]]): sparse linear jacobian.
+ |      
+ |              Returns:
+ |                  np.array[float[3]]: velocity of the point expressed in the world frame.
+ |              
+ |      
+ |      3. get_world_linear_velocity(self: raisimpy.ArticulatedSystem, body_id: int, body_pos: numpy.ndarray[float64]) -> numpy.ndarray[float64]
+ |      
+ |      
+ |              Return the velocity of a point (expressed in the body frame) in the world frame.
+ |      
+ |              Args:
+ |                  body_id (int): body id.
+ |                  body_pos (np.array[float[3]]): position of a point on the body frame.
+ |      
+ |              Returns:
+ |                  np.array[float[3]]: velocity of the body expressed in the world frame.
+ |  
+ |  get_world_orientation = get_world_quaternion(...)
+ |  
+ |  get_world_position(...)
+ |      get_world_position(*args, **kwargs)
+ |      Overloaded function.
+ |      
+ |      1. get_world_position(self: raisimpy.ArticulatedSystem, body_idx: int, body_point: numpy.ndarray[float64]) -> numpy.ndarray[float64]
+ |      
+ |      
+ |              Get the body's position with respect to the world frame.
+ |      
+ |              Args:
+ |                  body_idx (int): body/link index.
+ |                  body_point (np.array[float[3]]): position of point on the body expressed in the body frame.
+ |      
+ |              Returns:
+ |                  np.array[float[3]]: position of the body point in the world frame.
+ |              
+ |      
+ |      2. get_world_position(self: raisimpy.ArticulatedSystem, frame_id: int) -> numpy.ndarray[float64]
+ |      
+ |      
+ |              Get the joint frame's position with respect to the world frame.
+ |      
+ |              Args:
+ |                  frame_id (int): frame id.
+ |      
+ |              Returns:
+ |                  np.array[float[3]]: position of the joint frame expressed in the world frame.
+ |  
+ |  get_world_quaternion(...)
+ |      get_world_quaternion(self: raisimpy.ArticulatedSystem, frame_id: int) -> numpy.ndarray[float64]
+ |      
+ |      
+ |      Get the joint frame's orientation (expressed as a quaternion [w,x,y,z]) with respect to the world frame.
+ |      
+ |      Args:
+ |          frame_id (int): frame index.
+ |      
+ |      Returns:
+ |          np.array[float[3]]: orientation (quaternion) of the joint frame expressed in the world frame.
+ |  
+ |  get_world_rotation_matrix(...)
+ |      get_world_rotation_matrix(self: raisimpy.ArticulatedSystem, frame_id: int) -> numpy.ndarray[float64]
+ |      
+ |      
+ |      Get the joint frame's orientation (expressed as a rotation matrix) with respect to the world frame.
+ |      
+ |      Args:
+ |          frame_id (int): frame index.
+ |      
+ |      Returns:
+ |          np.array[float[3]]: orientation (rotation matrix) of the joint frame expressed in the world frame.
+ |  
+ |  ignore_collision_between(...)
+ |      ignore_collision_between(self: raisimpy.ArticulatedSystem, body_idx1: int, body_idx2: int) -> None
+ |      
+ |      
+ |      Ignore collision between the 2 specified bodies.
+ |      
+ |      Args:
+ |          body_idx1 (int): first body index.
+ |          body_idx2 (int): second body index.
+ |  
+ |  pre_contact_solver_update1(...)
+ |      pre_contact_solver_update1(self: raisimpy.ArticulatedSystem, gravity: numpy.ndarray[float64], dt: float) -> None
+ |      
+ |      
+ |      This method:
+ |      
+ |      1. updates kinematics if necessary (if user didn't call it manually).
+ |      2. computes the mass matrix, nonlinear term, inverse of the mass matrix, and contact jacobians.
+ |      
+ |      Note that the `integrate` method will automatically call this method.
+ |      
+ |      Args:
+ |          gravity (np.array[float[3]]): gravity vector.
+ |          dt (float): integration time.
+ |  
+ |  print_body_names_in_order(...)
+ |      print_body_names_in_order(self: raisimpy.ArticulatedSystem) -> None
+ |      
+ |      Print the moving bodies in the order. Fixed bodies are optimized out.
+ |  
+ |  print_frame_names_in_order(...)
+ |      print_frame_names_in_order(self: raisimpy.ArticulatedSystem) -> None
+ |      
+ |      Print the frames (that are attached to every joint coordinate) in the order.
+ |  
+ |  set_actuation_limits(...)
+ |      set_actuation_limits(self: raisimpy.ArticulatedSystem, upper: numpy.ndarray[float64[m, 1]], lower: numpy.ndarray[float64[m, 1]]) -> None
+ |      
+ |      
+ |      Set the upper and lower limits in actuation forces.
+ |      
+ |      Args:
+ |          upper (np.array[float[n]]): upper limits.
+ |          lower (np.array[float[n]]): lower limits.
+ |  
+ |  set_base_orientation(...)
+ |      set_base_orientation(self: raisimpy.ArticulatedSystem, orientation: numpy.ndarray[float64]) -> None
+ |      
+ |      
+ |      Set the base orientation.
+ |      
+ |      Args:
+ |          orientation (np.array[float[3]], np.array[float[4]], np.array[float[3,3]]): new base orientation.
+ |  
+ |  set_base_position(...)
+ |      set_base_position(self: raisimpy.ArticulatedSystem, position: numpy.ndarray[float64]) -> None
+ |      
+ |      
+ |      Set the base position.
+ |      
+ |      Args:
+ |          position (np.array[float[3]]): new base position.
+ |  
+ |  set_collision_object_position_offset(...)
+ |      set_collision_object_position_offset(*args, **kwargs)
+ |      Overloaded function.
+ |      
+ |      1. set_collision_object_position_offset(self: raisimpy.ArticulatedSystem, id_: int, position: numpy.ndarray[float64]) -> None
+ |      
+ |      
+ |                  Set the collision object position offset.
+ |      
+ |                  Args:
+ |                      id_ (int): collision object id.
+ |                      position (np.array[float[3]]): position offset.
+ |                  
+ |      
+ |      2. set_collision_object_position_offset(self: raisimpy.ArticulatedSystem, id_: int, orientation: numpy.ndarray[float64]) -> None
+ |      
+ |      
+ |                  Set the collision object orientation offset.
+ |      
+ |                  Args:
+ |                      id_ (int): collision object id.
+ |                      orientation (np.array[float[3]], np.array[float[4]], np.array[float[3,3]]): orientation offset.
+ |  
+ |  set_collision_object_shape_parameters(...)
+ |      set_collision_object_shape_parameters(self: raisimpy.ArticulatedSystem, id_: int, parameters: List[float]) -> None
+ |      
+ |      
+ |      Set the collision object shape parameters.
+ |      
+ |      Args:
+ |          id_ (int): collision object id.
+ |          parameters (list[float]): parameters.
+ |  
+ |  set_control_mode(...)
+ |      set_control_mode(self: raisimpy.ArticulatedSystem, mode: raisimpy.ControlMode) -> None
+ |      
+ |      
+ |      Set the control mode.
+ |      
+ |      Args:
+ |          mode (ControlMode.Type): control mode type, select between {FORCE_AND_TORQUE, PD_PLUS_FEEDFORWARD_TORQUE,
+ |              VELOCITY_PLUS_FEEDFORWARD_TORQUE}
+ |  
+ |  set_external_force(...)
+ |      set_external_force(*args, **kwargs)
+ |      Overloaded function.
+ |      
+ |      1. set_external_force(self: raisimpy.ArticulatedSystem, local_idx: int, force: numpy.ndarray[float64]) -> None
+ |      
+ |      
+ |                  Set the external force on the body.
+ |      
+ |                  Args:
+ |                      local_idx (int): local/link index.
+ |                      force (np.array[float[3]]): force vector.
+ |                  
+ |      
+ |      2. set_external_force(self: raisimpy.ArticulatedSystem, local_idx: int, force_frame: raisimpy.ArticulatedSystem.Frame, force: numpy.ndarray[float64], pos_frame: raisimpy.ArticulatedSystem.Frame, position: numpy.ndarray[float64]) -> None
+ |      
+ |      
+ |                  Set the external force on the specified point on the body.
+ |      
+ |                  Args:
+ |                      local_idx (int): local/link index.
+ |                      force_frame (Frame): frame in which the force vector is expressed in, select between {WORLD_FRAME,
+ |                          BODY_FRAME, PARENT_FRAME}.
+ |                      force (np.array[float[3]]): force vector.
+ |                      pos_frame (Frame): frame in which the position vector is expressed in, select between {WORLD_FRAME,
+ |                          BODY_FRAME, PARENT_FRAME}.
+ |                      position (np.array[float[3]]): position vector.
+ |  
+ |  set_external_torque(...)
+ |      set_external_torque(self: raisimpy.ArticulatedSystem, local_idx: int, torque: numpy.ndarray[float64]) -> None
+ |      
+ |      
+ |      Set the external force on the body.
+ |      
+ |      Args:
+ |          local_idx (int): local/link index.
+ |          force (np.array[float[3]]): force vector.
+ |  
+ |  set_generalized_coordinates(...)
+ |      set_generalized_coordinates(*args, **kwargs)
+ |      Overloaded function.
+ |      
+ |      1. set_generalized_coordinates(self: raisimpy.ArticulatedSystem, coordinates: std::initializer_list<double>) -> None
+ |      
+ |      
+ |              Set the generalized coordinates.
+ |      
+ |              Args:
+ |                  coordinates (list[float]): generalized coordinates to set.
+ |              
+ |      
+ |      2. set_generalized_coordinates(self: raisimpy.ArticulatedSystem, coordinates: numpy.ndarray[float64[m, 1]]) -> None
+ |      
+ |      
+ |              Set the generalized coordinates.
+ |      
+ |              Args:
+ |                  coordinates (np.array[float[n]]): generalized coordinates to set.
+ |  
+ |  set_generalized_forces(...)
+ |      set_generalized_forces(*args, **kwargs)
+ |      Overloaded function.
+ |      
+ |      1. set_generalized_forces(self: raisimpy.ArticulatedSystem, forces: std::initializer_list<double>) -> None
+ |      
+ |      
+ |              Set the generalized forces.
+ |      
+ |              These are the feedforward generalized forces. In the PD control mode, this differs from the actual
+ |              generalizedForces. The dimension should be the same as the number of DoFs.
+ |      
+ |              Args:
+ |                  forces (list[float]): generalized forces to set.
+ |              
+ |      
+ |      2. set_generalized_forces(self: raisimpy.ArticulatedSystem, forces: numpy.ndarray[float64[m, 1]]) -> None
+ |      
+ |      
+ |              Set the generalized forces.
+ |      
+ |              These are the feedforward generalized forces. In the PD control mode, this differs from the actual
+ |              generalizedForces. The dimension should be the same as the number of DoFs.
+ |      
+ |              Args:
+ |                  forces (np.array[float[n]]): generalized forces to set.
+ |  
+ |  set_generalized_velocities(...)
+ |      set_generalized_velocities(*args, **kwargs)
+ |      Overloaded function.
+ |      
+ |      1. set_generalized_velocities(self: raisimpy.ArticulatedSystem, velocities: std::initializer_list<double>) -> None
+ |      
+ |      
+ |              Set the generalized velocities.
+ |      
+ |              Args:
+ |                  velocities (list[float]): generalized velocities to set.
+ |              
+ |      
+ |      2. set_generalized_velocities(self: raisimpy.ArticulatedSystem, velocities: numpy.ndarray[float64[m, 1]]) -> None
+ |      
+ |      
+ |              Set the generalized velocities.
+ |      
+ |              Args:
+ |                  velocities (np.array[float[n]]): generalized velocities to set.
+ |  
+ |  set_inertias(...)
+ |      set_inertias(self: raisimpy.ArticulatedSystem, inertias: list) -> None
+ |      
+ |      
+ |      Set the inertias (one for each body).
+ |      
+ |      Args:
+ |          inertias (list[np.array[float[3,3]]]): body inertias.
+ |  
+ |  set_joint_cartesian_positions(...)
+ |      set_joint_cartesian_positions(self: raisimpy.ArticulatedSystem, positions: list) -> None
+ |      
+ |      
+ |      Set the joint Cartesian positions relative to their parent frame.
+ |      
+ |      Args:
+ |          positions (list[np.array[float[3]]]): joint cartesian positions (relative to their parent frame).
+ |  
+ |  set_joint_dampings(...)
+ |      set_joint_dampings(self: raisimpy.ArticulatedSystem, dampings: numpy.ndarray[float64[m, 1]]) -> None
+ |      
+ |      
+ |      Set the joint dampings (passive elements at the joints).
+ |      
+ |      Args:
+ |          dampings (np.array[float[n]]): joint damping coefficients.
+ |  
+ |  set_link_coms(...)
+ |      set_link_coms(self: raisimpy.ArticulatedSystem, coms: list) -> None
+ |      
+ |      
+ |      Set the center of mass of each link (expressed in their body frame).
+ |      
+ |      Args:
+ |          coms (list[np.array[float[3]]]): center of mass of each link (expressed in the body frame).
+ |  
+ |  set_mass(...)
+ |      set_mass(self: raisimpy.ArticulatedSystem, link_idx: int, value: float) -> None
+ |      
+ |      
+ |      Set the mass of the link.
+ |      
+ |      Args:
+ |          link_idx (int): link index.
+ |          value (float): mass value.
+ |  
+ |  set_masses(...)
+ |      set_masses(self: raisimpy.ArticulatedSystem, masses: List[float]) -> None
+ |      
+ |      
+ |      Set the body/link masses.
+ |      
+ |      Args:
+ |          masses (list[double]): body masses.
+ |  
+ |  set_pd_gains(...)
+ |      set_pd_gains(self: raisimpy.ArticulatedSystem, p_gains: numpy.ndarray[float64[m, 1]], d_gains: numpy.ndarray[float64[m, 1]]) -> None
+ |      
+ |      
+ |          Set the PD gains. It is effective only in the control mode 'PD_PLUS_FEEDFORWARD_TORQUE'. Set any arbitrary
+ |      number for unactuated degrees of freedom.
+ |      
+ |          Args:
+ |              p_gains (np.array[float[n]]): P gains.
+ |              d_gains (np.array[float[n]]): D gains.
+ |  
+ |  set_pd_targets(...)
+ |      set_pd_targets(self: raisimpy.ArticulatedSystem, pos_targets: numpy.ndarray[float64[m, 1]], vel_targets: numpy.ndarray[float64[m, 1]]) -> None
+ |      
+ |      
+ |          Set the PD targets. It is effective only in the control mode 'PD_PLUS_FEEDFORWARD_TORQUE'. Set any arbitrary
+ |      number for unactuated degrees of freedom.
+ |      
+ |          Args:
+ |              pos_targets (np.array[float[n]]): position targets.
+ |              vel_targets (np.array[float[n]]): velocity targets.
+ |  
+ |  set_states(...)
+ |      set_states(self: raisimpy.ArticulatedSystem, coordinates: numpy.ndarray[float64[m, 1]], velocities: numpy.ndarray[float64[m, 1]]) -> None
+ |      
+ |      
+ |      Set the joint states.
+ |      
+ |      Args:
+ |          coordinates (np.array[float[n]]): generalized coordinates to set.
+ |          velocities (np.array[float[n]]): generalized velocities to set.
+ |  
+ |  update_kinematics(...)
+ |      update_kinematics(self: raisimpy.ArticulatedSystem) -> None
+ |      
+ |      
+ |      Update the kinematics.
+ |      
+ |      It is unnecessary to call this function if you are simulating your system. `integrate1` calls this function.
+ |      Call this function if you want to get kinematic properties but you don't want to integrate.
+ |  
+ |  update_mass_info(...)
+ |      update_mass_info(self: raisimpy.ArticulatedSystem) -> None
+ |      
+ |      Update the mass information. This function must be called after we change the dynamic parameters.
+ |  
+ |  ----------------------------------------------------------------------
+ |  Data descriptors defined here:
+ |  
+ |  inertias
+ |  
+ |  joint_cartesian_positions
+ |  
+ |  link_coms
+ |  
+ |  masses
+ |  
+ |  ----------------------------------------------------------------------
+ |  Data and other attributes defined here:
+ |  
+ |  Frame = <class 'raisimpy.ArticulatedSystem.Frame'>
+ |      Members:
+ |      
+ |      WORLD_FRAME
+ |      
+ |      PARENT_FRAME
+ |      
+ |      BODY_FRAME
+ |  
+ |  ----------------------------------------------------------------------
+ |  Methods inherited from Object:
+ |  
+ |  add_contact_to_per_object_contact(...)
+ |      add_contact_to_per_object_contact(self: raisimpy.Object, contact: raisimpy.contact.Contact) -> None
+ |  
+ |  clear_per_object_contact(...)
+ |      clear_per_object_contact(self: raisimpy.Object) -> None
+ |  
+ |  get_body_type(...)
+ |      get_body_type(*args, **kwargs)
+ |      Overloaded function.
+ |      
+ |      1. get_body_type(self: raisimpy.Object, arg0: int) -> raisimpy.BodyType
+ |      
+ |      2. get_body_type(self: raisimpy.Object) -> raisimpy.BodyType
+ |  
+ |  get_contact_point_velocity(...)
+ |      get_contact_point_velocity(self: raisimpy.Object, point_id: int) -> numpy.ndarray[float64]
+ |      
+ |      
+ |      Get the contact point velocity.
+ |      
+ |      Args:
+ |          point_id (int): point id.
+ |      
+ |      Returns:
+ |          np.array[float[3]]: contact point velocity.
+ |  
+ |  get_contacts(...)
+ |      get_contacts(*args, **kwargs)
+ |      Overloaded function.
+ |      
+ |      1. get_contacts(self: raisimpy.Object) -> List[raisimpy.contact.Contact]
+ |      
+ |      
+ |                  Get the list of contact points.
+ |      
+ |                  Returns:
+ |                      list[Contact]: list of contact points.
+ |                  
+ |      
+ |      2. get_contacts(self: raisimpy.Object) -> List[raisimpy.contact.Contact]
+ |      
+ |      
+ |                  Get the list of contact points.
+ |      
+ |                  Returns:
+ |                      list[Contact]: list of contact points.
+ |  
+ |  get_index_in_world(...)
+ |      get_index_in_world(self: raisimpy.Object) -> int
+ |      
+ |      
+ |      Get the object index in the world.
+ |      
+ |      Returns:
+ |          int: object index in the world.
+ |  
+ |  get_name(...)
+ |      get_name(self: raisimpy.Object) -> str
+ |      
+ |      
+ |      Get the object's name.
+ |      
+ |      Returns:
+ |          str: object's name.
+ |  
+ |  get_object_type(...)
+ |      get_object_type(self: raisimpy.Object) -> raisimpy.ObjectType
+ |  
+ |  integrate(...)
+ |      integrate(self: raisimpy.Object, dt: float) -> None
+ |      
+ |      integrate.
+ |  
+ |  pre_contact_solver_update2(...)
+ |      pre_contact_solver_update2(self: raisimpy.Object, gravity: numpy.ndarray[float64], dt: float) -> None
+ |  
+ |  set_index_in_world(...)
+ |      set_index_in_world(self: raisimpy.Object, index: int) -> None
+ |      
+ |      
+ |      Set the object index in the world.
+ |      
+ |      Args:
+ |          index (int): object index.
+ |  
+ |  set_name(...)
+ |      set_name(self: raisimpy.Object, name: str) -> None
+ |      
+ |      
+ |      Set the object's name.
+ |      
+ |      Args:
+ |          name (str): object's name.
+ |  
+ |  update_collision(...)
+ |      update_collision(self: raisimpy.Object) -> None
+ |      
+ |      Update the collisions.
+ |  
+ |  ----------------------------------------------------------------------
+ |  Data descriptors inherited from Object:
+ |  
+ |  name
+ |  
+ |  ----------------------------------------------------------------------
+ |  Methods inherited from pybind11_builtins.pybind11_object:
+ |  
+ |  __new__(*args, **kwargs) from pybind11_builtins.pybind11_type
+ |      Create and return a new object.  See help(type) for accurate signature.
+

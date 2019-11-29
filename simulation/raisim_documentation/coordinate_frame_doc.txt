@@ -1,0 +1,36 @@
+Help on class CoordinateFrame in module raisimpy:
+
+class CoordinateFrame(pybind11_builtins.pybind11_object)
+ |  Raisim Coordinate Frame class.
+ |  
+ |  Method resolution order:
+ |      CoordinateFrame
+ |      pybind11_builtins.pybind11_object
+ |      builtins.object
+ |  
+ |  Methods defined here:
+ |  
+ |  __init__(self, /, *args, **kwargs)
+ |      Initialize self.  See help(type(self)) for accurate signature.
+ |  
+ |  ----------------------------------------------------------------------
+ |  Data descriptors defined here:
+ |  
+ |  is_child
+ |  
+ |  name
+ |  
+ |  orientation
+ |  
+ |  parent_id
+ |  
+ |  parent_name
+ |  
+ |  position
+ |  
+ |  ----------------------------------------------------------------------
+ |  Methods inherited from pybind11_builtins.pybind11_object:
+ |  
+ |  __new__(*args, **kwargs) from pybind11_builtins.pybind11_type
+ |      Create and return a new object.  See help(type) for accurate signature.
+
