@@ -24,7 +24,10 @@ void setup() {
 }
  
 void loop() {
+  // nothing
+}
 
+void receiveData(int byteCount) {
   // The sensor is triggered by a HIGH pulse of 10 or more microseconds.
   // Give a short LOW pulse beforehand to ensure a clean HIGH pulse:
   digitalWrite(trigPinX, LOW);
@@ -38,6 +41,7 @@ void loop() {
   // of the ping to the reception of its echo off of an object.
   pinMode(echoPinX, INPUT);
   float durationX = pulseIn(echoPinX, HIGH);
+  float cmX = (durationX/2) / 74;
   float inchesX = (durationX/2) / 74;   // Divide by 74 or multiply by 0.0135
 
   // The sensor is triggered by a HIGH pulse of 10 or more microseconds.
@@ -53,38 +57,21 @@ void loop() {
   // of the ping to the reception of its echo off of an object.
   pinMode(echoPinY, INPUT);
   float durationY = pulseIn(echoPinY, HIGH);
+  float cmY = (durationY/2) / 74;
   float inchesY = (durationY/2) / 74;   // Divide by 74 or multiply by 0.0135
-  Serial.println(inchesX);
-  Serial.println(inchesY);
-  
-  // Convert the time into a distance
-//  return cm;
-//  float cm = getCm();
-//  float inches = getInches();
-//  sendData(inchesX, inchesY);
-//  Serial.println(inchesY);
-//  Serial.println(inchesX);
-//  Serial.println();
-  delay(250);
-}
 
-void receiveData(int byteCount) {
   while (Wire.available()) {
     cmd = (char)Wire.read();
   }
   if (cmd == "send_ultrasonic_data") {
-    Wire.write((byte)"yuh");
+    union cvt {
+      float val;
+      unsigned char byte_array[4];
+    } x;
+    x.val = cmX;
+    Wire.write(x.byte_array, 4);
   }
   else {
-    Wire.write((byte)"nah");
+    Wire.send("Command failed.");
   }
-}
-
-float sendData(float val1, float val2){
-  Serial.print(val1);
-  Serial.print("in, ");
-  Serial.println();  
-  Serial.print(val2);
-  Serial.print("in, ");
-  Serial.println();  
 }
