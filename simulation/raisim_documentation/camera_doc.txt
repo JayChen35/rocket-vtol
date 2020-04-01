@@ -1,0 +1,139 @@
+Help on class CameraMan in module raisimpy:
+
+class CameraMan(pybind11_builtins.pybind11_object)
+ |  Raisim CameraMan
+ |  
+ |  Method resolution order:
+ |      CameraMan
+ |      pybind11_builtins.pybind11_object
+ |      builtins.object
+ |  
+ |  Methods defined here:
+ |  
+ |  __init__(self, /, *args, **kwargs)
+ |      Initialize self.  See help(type(self)) for accurate signature.
+ |  
+ |  get_camera(...)
+ |      get_camera(self: raisimpy.CameraMan) -> raisimpy.ogre.SceneNode
+ |      
+ |      
+ |      Get the camera scene node.
+ |      
+ |      Returns:
+ |          Ogre.SceneNode: camera scene node.
+ |  
+ |  get_style(...)
+ |      get_style(self: raisimpy.CameraMan) -> raisimpy.CameraStyle
+ |      
+ |      
+ |      Get the camera style.
+ |      
+ |      Returns:
+ |          CameraStyle: camera style between {CS_FREELOOK, CS_ORBIT, CS_MANUAL}.
+ |  
+ |  get_target(...)
+ |      get_target(self: raisimpy.CameraMan) -> raisimpy.ogre.SceneNode
+ |      
+ |      
+ |      Get the target scene node that we revolve around. Only applies for orbit style.
+ |      
+ |      Returns:
+ |          Ogre.SceneNode: target scene node.
+ |  
+ |  get_top_speed(...)
+ |      get_top_speed(self: raisimpy.CameraMan) -> float
+ |      
+ |      
+ |      Get the camera top speed (only valid in the free-look style).
+ |      
+ |      Returns:
+ |          float: camera top speed.
+ |  
+ |  manual_stop(...)
+ |      manual_stop(self: raisimpy.CameraMan) -> None
+ |      
+ |      Manually stops the camera when in free-look mode.
+ |  
+ |  set_camera(...)
+ |      set_camera(self: raisimpy.CameraMan, camera: raisimpy.ogre.SceneNode) -> None
+ |      
+ |      
+ |      Set the camera scene node; i.e. swaps the camera on our camera man for another camera.
+ |      
+ |      Args:
+ |          camera (Ogre.SceneNode): camera scene node.
+ |  
+ |  set_fixed_yaw(...)
+ |      set_fixed_yaw(self: raisimpy.CameraMan, fixed: bool) -> None
+ |      
+ |      
+ |      Fix the yaw axis to be Vector3::UNIT_Y of the parent node (tabletop mode) otherwise the yaw axis can
+ |      change freely.
+ |      
+ |      Args:
+ |          fixed (bool): if we should fix or not the yaw axis.
+ |  
+ |  set_pivot_offset(...)
+ |      set_pivot_offset(self: raisimpy.CameraMan, offset: numpy.ndarray[float64]) -> None
+ |      
+ |      
+ |      Set the pivot offset.
+ |      
+ |      Args:
+ |          offset (np.array[float[3]]): pivot offset.
+ |  
+ |  set_style(...)
+ |      set_style(self: raisimpy.CameraMan, style: raisimpy.CameraStyle) -> None
+ |      
+ |      
+ |      Set the camera style.
+ |      
+ |      Args:
+ |          style (CameraStyle): camera style between {CS_FREELOOK, CS_ORBIT, CS_MANUAL}.
+ |  
+ |  set_target(...)
+ |      set_target(self: raisimpy.CameraMan, target: raisimpy.ogre.SceneNode) -> None
+ |      
+ |      
+ |      Set the target scene node; i.e. the target we will revolve around. Only applies for orbit style.
+ |      
+ |      Args:
+ |          target (Ogre.SceneNode): target scene node.
+ |  
+ |  set_top_speed(...)
+ |      set_top_speed(self: raisimpy.CameraMan, speed: float) -> None
+ |      
+ |      
+ |      Set the camera's top speed.
+ |      
+ |      Args:
+ |          speed (float): camera top seed.
+ |  
+ |  set_yaw_pitch_dist(...)
+ |      set_yaw_pitch_dist(self: raisimpy.CameraMan, yaw: float, pitch: float, dist: float, track: bool = False) -> None
+ |      
+ |      
+ |      Sets the spatial offset from the target. Only applies for orbit style.
+ |      
+ |      Args:
+ |          yaw (float): yaw angle in radians.
+ |          pitch (float): pitch angle in radians.
+ |          dist (float): distance from target.
+ |          track_objects_yaw (bool): if True, tracks object yaw.
+ |  
+ |  update(...)
+ |      update(self: raisimpy.CameraMan) -> None
+ |      
+ |      update.
+ |  
+ |  ----------------------------------------------------------------------
+ |  Data descriptors defined here:
+ |  
+ |  style
+ |  
+ |  ----------------------------------------------------------------------
+ |  Methods inherited from pybind11_builtins.pybind11_object:
+ |  
+ |  __new__(*args, **kwargs) from pybind11_builtins.pybind11_type
+ |      Create and return a new object.  See help(type) for accurate signature.
+

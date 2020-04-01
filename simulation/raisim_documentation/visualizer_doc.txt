@@ -1,0 +1,591 @@
+Help on OgreVis in module raisimpy object:
+
+class OgreVis(pybind11_builtins.pybind11_object)
+ |  Raisim Ogre visualizer.
+ |  
+ |  Method resolution order:
+ |      OgreVis
+ |      pybind11_builtins.pybind11_object
+ |      builtins.object
+ |  
+ |  Methods defined here:
+ |  
+ |  __init__(...)
+ |      __init__(*args, **kwargs)
+ |      Overloaded function.
+ |      
+ |      1. __init__(self: raisimpy.OgreVis) -> None
+ |      
+ |      Initialize the visualizer.
+ |      
+ |      2. __init__(self: raisimpy.OgreVis, world: raisimpy.World, width: int = 1280, height: int = 720, fps: float = 60, anti_aliasing: int = 2) -> None
+ |      
+ |      
+ |                  Instantiate the visualizer for the given world.
+ |      
+ |                  Args:
+ |                      world (World): world instance.
+ |                      width (int): width of the window.
+ |                      height (int): height of the window.
+ |                      fps (double): the number of frames per second.
+ |                      anti_aliasing (int): anti aliasing.
+ |  
+ |  add_resource_directory(...)
+ |      add_resource_directory(self: raisimpy.OgreVis, dir: str) -> None
+ |      
+ |      
+ |      Add resource directory for materials
+ |      
+ |      Args:
+ |          dir (str): resource directory path.
+ |  
+ |  add_visual_object(...)
+ |      add_visual_object(self: raisimpy.OgreVis, name: str, mesh_name: str, material: str, scale: numpy.ndarray[float64], cast_shadow: bool = True, group: int = 3) -> None
+ |      
+ |      
+ |      Add a visual object.
+ |      
+ |      Args:
+ |          name (str): name of the visual object.
+ |          mesh_name (str): name of the material.
+ |          material (str): material.
+ |          scale (np.array[float[3]]): scale.
+ |          cast_shadow (bool): if we should cast shadow or not.
+ |          group (unsigned long int): group. You can select between {RAISIM_OBJECT_GROUP, RAISIM_COLLISION_BODY_GROUP,
+ |              RAISIM_CONTACT_POINT_GROUP, RAISIM_CONTACT_FORCE_GROUP}, or any combination using bit operations.
+ |  
+ |  build_height_map(...)
+ |      build_height_map(self: raisimpy.OgreVis, name: str, x_samples: int, x_size: float, x_center: float, y_samples: int, y_size: float, y_center: float, height: List[float]) -> None
+ |      
+ |      
+ |      Build the heigthmap.
+ |      
+ |      Args:
+ |          name (str): the heightmap name.
+ |          x_samples (int): the number of samples in x.
+ |          x_size (float): the size in the x direction.
+ |          x_center (float): the x center of the heightmap in the world.
+ |          y_samples (int): the number of samples in y.
+ |          y_size (float): the size in the y direction.
+ |          y_center (float): the y center of the heightmap in the world.
+ |          height (list[float]): list of desired heights.
+ |  
+ |  clear_visual_object(...)
+ |      clear_visual_object(self: raisimpy.OgreVis) -> None
+ |      
+ |      Clear all the visual objects.
+ |  
+ |  close_app(...)
+ |      close_app(self: raisimpy.OgreVis) -> None
+ |      
+ |      This function closes down the application - saves the configuration then shutdowns.
+ |  
+ |  create_graphical_object(...)
+ |      create_graphical_object(*args, **kwargs)
+ |      Overloaded function.
+ |      
+ |      1. create_graphical_object(self: raisimpy.OgreVis, sphere: raisimpy.Sphere, name: str, material: str = 'default') -> List[raisimpy.GraphicObject]
+ |      
+ |      
+ |                  Add a sphere in the window.
+ |      
+ |                  Args:
+ |                      sphere (Sphere): Raisim sphere instance.
+ |                      name (str): name of the sphere.
+ |                      material (str): material for visualization.
+ |                  
+ |      
+ |      2. create_graphical_object(self: raisimpy.OgreVis, ground: raisimpy.Ground, dimension: float, name: str, material: str = 'default') -> List[raisimpy.GraphicObject]
+ |      
+ |      
+ |                  Add a ground in the window.
+ |      
+ |                  Args:
+ |                      ground (Ground): Raisim ground instance.
+ |                      dimension (double): the plane dimension.
+ |                      name (str): name of the ground.
+ |                      material (str): material for visualization.
+ |                  
+ |      
+ |      3. create_graphical_object(self: raisimpy.OgreVis, box: raisimpy.Box, name: str, material: str = 'default') -> List[raisimpy.GraphicObject]
+ |      
+ |      
+ |                  Add a box in the window.
+ |      
+ |                  Args:
+ |                      box (Box): Raisim box instance.
+ |                      name (str): name of the box.
+ |                      material (str): material for visualization.
+ |                  
+ |      
+ |      4. create_graphical_object(self: raisimpy.OgreVis, cylinder: raisimpy.Cylinder, name: str, material: str = 'default') -> List[raisimpy.GraphicObject]
+ |      
+ |      
+ |                  Add a cylinder in the window.
+ |      
+ |                  Args:
+ |                      cylinder (Cylinder): Raisim cylinder instance.
+ |                      name (str): name of the cylinder.
+ |                      material (str): material for visualization.
+ |                  
+ |      
+ |      5. create_graphical_object(self: raisimpy.OgreVis, wire: raisimpy.constraints.Wire, name: str, material: str = 'default') -> raisimpy.VisualObject
+ |      
+ |      
+ |                  Add a wire in the window.
+ |      
+ |                  Args:
+ |                      wire (Wire): Raisim wire instance.
+ |                      name (str): name of the wire.
+ |                      material (str): material for visualization.
+ |                  
+ |      
+ |      6. create_graphical_object(self: raisimpy.OgreVis, capsule: raisimpy.Capsule, name: str, material: str = 'default') -> List[raisimpy.GraphicObject]
+ |      
+ |      
+ |                  Add a capsule in the window.
+ |      
+ |                  Args:
+ |                      capsule (Capsule): Raisim capsule instance.
+ |                      name (str): name of the capsule.
+ |                      material (str): material for visualization.
+ |                  
+ |      
+ |      7. create_graphical_object(self: raisimpy.OgreVis, articulated_system: raisimpy.ArticulatedSystem, name: str) -> List[raisimpy.GraphicObject]
+ |      
+ |      
+ |                  Add an articulated system in the window.
+ |      
+ |                  Args:
+ |                      articulated_system (ArticulatedSystem): Raisim articulated system instance.
+ |                      name (str): name of the articulated system.
+ |                  
+ |      
+ |      8. create_graphical_object(self: raisimpy.OgreVis, capsule: raisimpy.HeightMap, name: str, material: str = 'default', down_sample: int = 1) -> List[raisimpy.GraphicObject]
+ |      
+ |      
+ |                  Add a heightmap in the window.
+ |      
+ |                  Args:
+ |                      heightmap (HeightMap): Raisim heightmap instance.
+ |                      name (str): name of the heightmap.
+ |                      material (str): material for visualization.
+ |                  
+ |      
+ |      9. create_graphical_object(self: raisimpy.OgreVis, mesh: raisimpy.Mesh, name: str, material: str = 'default') -> List[raisimpy.GraphicObject]
+ |      
+ |      
+ |                  Add a mesh in the window.
+ |      
+ |                  Args:
+ |                      mesh (Mesh): Raisim mesh instance.
+ |                      name (str): name of the mesh.
+ |                      material (str): material for visualization.
+ |  
+ |  deselect(...)
+ |      deselect(self: raisimpy.OgreVis) -> None
+ |      
+ |      Deselect the current selected object.
+ |  
+ |  get_camera_man(...)
+ |      get_camera_man(self: raisimpy.OgreVis) -> raisimpy.CameraMan
+ |      
+ |      
+ |      Return the camera man instance attached to the visualizer.
+ |      
+ |      Returns:
+ |          raisim.visualizer.CameraMan: camera man instance.
+ |  
+ |  get_light(...)
+ |      get_light(self: raisimpy.OgreVis, index: str = 'default') -> raisimpy.ogre.Light
+ |      
+ |      
+ |      Return the default light that can be adjusted.
+ |      
+ |      Returns:
+ |          Light: Light instance.
+ |  
+ |  get_light_node(...)
+ |      get_light_node(self: raisimpy.OgreVis, index: str = 'default') -> raisimpy.ogre.SceneNode
+ |      
+ |      
+ |      Get LightNode for moving the main light around.
+ |      
+ |      Returns:
+ |          SceneNode: Light node instance.
+ |  
+ |  get_paused(...)
+ |      get_paused(self: raisimpy.OgreVis) -> bool
+ |      
+ |      
+ |      Return if the visualizer is paused or not.
+ |      
+ |      Returns:
+ |          bool: True if the visualizer is paused.
+ |  
+ |  get_real_time_factor_reference(...)
+ |      get_real_time_factor_reference(self: raisimpy.OgreVis) -> float
+ |      
+ |      
+ |      Get the real time factor reference.
+ |      
+ |      Returns:
+ |          float: real time factor reference.
+ |  
+ |  get_resource_dir(...)
+ |      get_resource_dir(self: raisimpy.OgreVis) -> str
+ |      
+ |      
+ |      Get resource directory of RaisimOgreVisualizer
+ |      
+ |      Returns:
+ |          str: resource directory path.
+ |  
+ |  get_scene_manager(...)
+ |      get_scene_manager(self: raisimpy.OgreVis) -> raisimpy.ogre.SceneManager
+ |      
+ |      
+ |      Get the Ogre::SceneManager owned by this class.
+ |      
+ |      Returns:
+ |          Ogre.SceneManager: the scene manager.
+ |  
+ |  get_selected(...)
+ |      get_selected(self: raisimpy.OgreVis) -> Tuple[raisimpy.Object, int]
+ |      
+ |      
+ |      Return the current selected item.
+ |      
+ |      Returns:
+ |          Object: Raisim object instance.
+ |          int: index.
+ |  
+ |  get_selected_graphical_object(...)
+ |      get_selected_graphical_object(self: raisimpy.OgreVis) -> raisimpy.GraphicObject
+ |      
+ |      
+ |      Return the current selected graphical object item.
+ |      
+ |      Returns:
+ |          GraphicObject: Raisim graphic object instance.
+ |  
+ |  get_take_n_steps(...)
+ |      get_take_n_steps(self: raisimpy.OgreVis) -> int
+ |      
+ |      
+ |      Get take N steps.
+ |      
+ |      Returns:
+ |          int: num of steps.
+ |  
+ |  get_view_port(...)
+ |      get_view_port(self: raisimpy.OgreVis) -> raisimpy.ogre.Viewport
+ |      
+ |      
+ |      Get main Ogre::Viewport.
+ |      
+ |      Note: 'A viewport is the meeting of a camera and a rendering surface - the camera renders the scene from a
+ |      viewpoint, and places its results into some subset of a rendering target, which may be the whole surface or
+ |      just a part of the surface. Each viewport has a single camera as source and a single target as destination.
+ |      A camera only has 1 viewport, but a render target may have several. A viewport also has a Z-order, i.e. if
+ |      there is more than one viewport on a single render target and they overlap, one must obscure the other in
+ |      some predetermined way.' [1]
+ |      
+ |      Returns:
+ |          Viewport: the viewport.
+ |      
+ |      References:
+ |          - [1] Ogre::Viewport class reference: https://www.ogre3d.org/docs/api/1.8/class_ogre_1_1_viewport.html
+ |  
+ |  get_visual_object_list(...)
+ |      get_visual_object_list(self: raisimpy.OgreVis) -> Dict[str, raisimpy.VisualObject]
+ |      
+ |      
+ |      Return the list of visual objects.
+ |      
+ |      Returns:
+ |          dict[str:VisualObject]: dictionary mapping names to visual objects.
+ |  
+ |  get_world(...)
+ |      get_world(self: raisimpy.OgreVis) -> raisimpy.World
+ |      
+ |      
+ |      Return the world instance attached to the visualizer.
+ |      
+ |      Returns:
+ |          World: world instance.
+ |  
+ |  init_app(...)
+ |      init_app(self: raisimpy.OgreVis) -> None
+ |      
+ |      
+ |      This calls `initApp`. Note that you have to configure it before calling it, by setting the world, window
+ |      size, the various callbacks, and the anti-aliasing.
+ |  
+ |  is_recording(...)
+ |      is_recording(self: raisimpy.OgreVis) -> bool
+ |      
+ |      
+ |      Return if the visualizer is recording or not.
+ |      
+ |      Returns:
+ |          bool: True if the visualizer is recording.
+ |  
+ |  load_material(...)
+ |      load_material(self: raisimpy.OgreVis, filename: str) -> None
+ |      
+ |      
+ |      Once the directory is added (using `add_resource_dir`), load the material file in the directory.
+ |      
+ |      Args:
+ |          filename (str): material filename.
+ |  
+ |  load_mesh(...)
+ |      load_mesh(self: raisimpy.OgreVis, filename: str, name: str, from_memory: bool = False) -> None
+ |      
+ |      
+ |      Loading mesh file using assimp. Ogre only reads .mesh file. If it something else is given, it creates
+ |      .mesh file inside the directory. file can be the whole path to the meshfile, or from the memory.
+ |      
+ |      Args:
+ |          filename (str): mesh filename.
+ |          name (str): mesh name.
+ |          from_memory (bool): if we should load it from memory.
+ |  
+ |  remote_run(...)
+ |      remote_run(self: raisimpy.OgreVis) -> None
+ |      
+ |      Run in remote mode.
+ |  
+ |  remove(...)
+ |      remove(*args, **kwargs)
+ |      Overloaded function.
+ |      
+ |      1. remove(self: raisimpy.OgreVis, obj: raisimpy.Object) -> None
+ |      
+ |      
+ |              Remove an object from the visualizer.
+ |      
+ |              Args:
+ |                  obj (Object): Raisim object instance to be removed.
+ |              
+ |      
+ |      2. remove(self: raisimpy.OgreVis, name: str) -> None
+ |      
+ |      
+ |              Remove an object from the visualizer.
+ |      
+ |              Args:
+ |                  name (str): name of the object to be removed.
+ |  
+ |  render_one_frame(...)
+ |      render_one_frame(self: raisimpy.OgreVis) -> None
+ |      
+ |      renders a single frame without updating simulation.
+ |  
+ |  run(...)
+ |      run(self: raisimpy.OgreVis) -> None
+ |      
+ |      run simulation and visualization.
+ |  
+ |  select(...)
+ |      select(self: raisimpy.OgreVis, obj: raisimpy.GraphicObject, highlight: bool = True) -> None
+ |      
+ |      
+ |      Select the given graphic object item.
+ |      
+ |      Args:
+ |          obj (GraphicObject): Raisim graphic object instance.
+ |          highlight (bool): if we should highlight the graphical object in the visualizer.
+ |  
+ |  set_anti_aliasing(...)
+ |      set_anti_aliasing(self: raisimpy.OgreVis, fsaa: int) -> None
+ |      
+ |      
+ |      Set the anti-aliasing.
+ |      
+ |      Args:
+ |          fsaa (int): frame anti-aliasing; fsaa should be set to one of (1,2,4,8).
+ |  
+ |  set_camera_speed(...)
+ |      set_camera_speed(self: raisimpy.OgreVis, speed: float) -> None
+ |      
+ |      
+ |      Set camera speed.
+ |      
+ |      Args:
+ |          speed (float): camera speed (for free motion).
+ |  
+ |  set_contact_visual_object_size(...)
+ |      set_contact_visual_object_size(self: raisimpy.OgreVis, point_size: float, force_arrow_length: float) -> None
+ |      
+ |      
+ |      Set the contact visual object sizes (for contact points and contact force arrows).
+ |      
+ |      Args:
+ |          point_size (float): point size.
+ |          force_arrow_length (float): force size corresponding to the maximum impulse.
+ |  
+ |  set_control_callback(...)
+ |      set_control_callback(self: raisimpy.OgreVis, callback: Callable[[], None]) -> None
+ |      
+ |      
+ |      Set control callback.
+ |      
+ |      Args:
+ |          callback (callable): callable void function.
+ |  
+ |  set_default_callbacks(...)
+ |      set_default_callbacks(self: raisimpy.OgreVis) -> None
+ |      
+ |      
+ |      This sets the default callbacks (imguiSetupCallback, imguiRenderCallBack, raisimKeyboardCallback, setupCallback).
+ |  
+ |  set_desired_fps(...)
+ |      set_desired_fps(self: raisimpy.OgreVis, fps: float) -> None
+ |      
+ |      
+ |      Set the desired frame per second.
+ |      
+ |      Args:
+ |          fps (double): frame per second.
+ |  
+ |  set_imgui_render_callback(...)
+ |      set_imgui_render_callback(self: raisimpy.OgreVis, callback: Callable[[], None]) -> None
+ |      
+ |      
+ |      Set imgui render callback. This callback is called for every frame.
+ |      
+ |      Args:
+ |          callback (callable): callable void function.
+ |  
+ |  set_imgui_setup_callback(...)
+ |      set_imgui_setup_callback(self: raisimpy.OgreVis, callback: Callable[[], None]) -> None
+ |      
+ |      
+ |      Set imgui setup callback. This callback is called only once in setup.
+ |      
+ |      Args:
+ |          callback (callable): callable void function.
+ |  
+ |  set_keyboard_callback(...)
+ |      set_keyboard_callback(self: raisimpy.OgreVis, callback: Callable[[raisimpy.ogre.KeyboardEvent], bool]) -> None
+ |      
+ |      
+ |      Set keyboard callback. This callback is called for every keyboard event.
+ |      
+ |      Args:
+ |          callback (callable): callable function which accepts as input the KeyboardEvent.
+ |  
+ |  set_remote_mode(...)
+ |      set_remote_mode(self: raisimpy.OgreVis, mode: bool) -> None
+ |      
+ |      
+ |      Set the remote mode.
+ |      
+ |      Args:
+ |          mode (bool): True if we are in a remote mode.
+ |  
+ |  set_setup_callback(...)
+ |      set_setup_callback(self: raisimpy.OgreVis, callback: Callable[[], None]) -> None
+ |      
+ |      
+ |      Set set up callbacks; load custom meshes, materials, anything necessary for setup.
+ |      
+ |      Args:
+ |          callback (callable): callable void function.
+ |  
+ |  set_visibility_mask(...)
+ |      set_visibility_mask(self: raisimpy.OgreVis, mask: int) -> None
+ |      
+ |      
+ |      Set the visibility mask.
+ |      
+ |      Args:
+ |          mask (unsigned long int): mask (it is a bitfield).
+ |  
+ |  set_window_size(...)
+ |      set_window_size(self: raisimpy.OgreVis, width: int, height: int) -> None
+ |      
+ |      
+ |      Set the window size.
+ |      
+ |      Returns:
+ |          width: width of the window.
+ |          height: height of the window.
+ |  
+ |  set_world(...)
+ |      set_world(self: raisimpy.OgreVis, world: raisimpy.World) -> None
+ |      
+ |      
+ |      Set the world instance to the visualizer.
+ |      
+ |      Warnings: this must be called before simulation.
+ |      
+ |      Args:
+ |          world (World): world instance.
+ |  
+ |  start_recording_video(...)
+ |      start_recording_video(self: raisimpy.OgreVis, filename: str) -> None
+ |      
+ |      
+ |      Initiate a video recording session.
+ |      
+ |      Returns:
+ |          filename (str): filename for the recorded video.
+ |  
+ |  start_rendering(...)
+ |      start_rendering(self: raisimpy.OgreVis) -> None
+ |      
+ |      start rendering loop without updating simulation.
+ |  
+ |  stop_recording_video_and_save(...)
+ |      stop_recording_video_and_save(self: raisimpy.OgreVis) -> None
+ |      
+ |      Stop the recording of the video and save it in the previous given filename.
+ |  
+ |  sync(...)
+ |      sync(self: raisimpy.OgreVis) -> None
+ |      
+ |      Synchronize Raisim and Ogre.
+ |  
+ |  ----------------------------------------------------------------------
+ |  Static methods defined here:
+ |  
+ |  get(...) from builtins.PyCapsule
+ |      get() -> raisimpy.OgreVis
+ |      
+ |      
+ |      Return a pointer to the singleton visualizer.
+ |      
+ |      Returns:
+ |          OgreVis: reference to this class.
+ |  
+ |  ----------------------------------------------------------------------
+ |  Data descriptors defined here:
+ |  
+ |  paused
+ |      Return if the visualizer is paused or not.
+ |  
+ |  ----------------------------------------------------------------------
+ |  Data and other attributes defined here:
+ |  
+ |  VisualizationGroup = <class 'raisimpy.OgreVis.VisualizationGroup'>
+ |      Members:
+ |      
+ |      RAISIM_OBJECT_GROUP
+ |      
+ |      RAISIM_COLLISION_BODY_GROUP
+ |      
+ |      RAISIM_CONTACT_POINT_GROUP
+ |      
+ |      RAISIM_CONTACT_FORCE_GROUP
+ |  
+ |  ----------------------------------------------------------------------
+ |  Methods inherited from pybind11_builtins.pybind11_object:
+ |  
+ |  __new__(*args, **kwargs) from pybind11_builtins.pybind11_type
+ |      Create and return a new object.  See help(type) for accurate signature.
+
+[2020:03:31:22:01:34 OgreVis.hpp:335] Loading RaisimOgre Resources from: [0m
+[2020:03:31:22:01:34 OgreVis.hpp:336] Loading OGRE Configurations from: /mnt/c/Users/Srikar/Documents/RLTVC/raisim_build/share/raisimOgre/cmake/../ogre/[0m
