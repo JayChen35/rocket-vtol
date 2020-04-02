@@ -200,24 +200,6 @@ class SingleBodyObject(Object)
  |      Returns:
  |          np.array[float[3,3]]: world inertia matrix.
  |  
- |  get_world_position(...)
- |      get_world_position(self: raisimpy.SingleBodyObject) -> numpy.ndarray[float64[3, 1]]
- |      
- |      
- |      Get the body's position with respect to the world frame.
- |      
- |      Returns:
- |          np.array[float[3]]: position in the world frame.
- |  
- |  get_world_rotation_matrix(...)
- |      get_world_rotation_matrix(self: raisimpy.SingleBodyObject) -> numpy.ndarray[float64[3, 3]]
- |      
- |      
- |      Get the body's orientation (expressed as a rotation matrix) with respect to the world frame.
- |      
- |      Returns:
- |          np.array[float[3,3]]: rotation matrix.
- |  
  |  integrate(...)
  |      integrate(self: raisimpy.SingleBodyObject, dt: float) -> None
  |      
@@ -248,14 +230,28 @@ class SingleBodyObject(Object)
  |          body_type (BodyType): body type.
  |  
  |  set_external_force(...)
- |      set_external_force(self: raisimpy.SingleBodyObject, local_idx: int, force: numpy.ndarray[float64]) -> None
+ |      set_external_force(*args, **kwargs)
+ |      Overloaded function.
+ |      
+ |      1. set_external_force(self: raisimpy.SingleBodyObject, local_idx: int, force: numpy.ndarray[float64]) -> None
  |      
  |      
- |      Set the external force on the body.
+ |                  Set the external force on the body.
  |      
- |      Args:
- |          local_idx (int): local index.
- |          force (np.array[float[3]]): force vector.
+ |                  Args:
+ |                      local_idx (int): local index.
+ |                      force (np.array[float[3]]): force vector.
+ |                  
+ |      
+ |      2. set_external_force(self: raisimpy.SingleBodyObject, local_idx: int, pos: numpy.ndarray[float64], force: numpy.ndarray[float64]) -> None
+ |      
+ |      
+ |                  Set the external force on the body at a specified position.
+ |      
+ |                  Args:
+ |                      local_idx (int): local index.
+ |                      pos (np.array[float[3]]): position vector.
+ |                      force (np.array[float[3]]): force vector.
  |  
  |  set_external_torque(...)
  |      set_external_torque(self: raisimpy.SingleBodyObject, local_idx: int, torque: numpy.ndarray[float64]) -> None
@@ -465,6 +461,36 @@ class SingleBodyObject(Object)
  |      
  |      Returns:
  |          np.array[float[3]]: linear velocity expressed in the Cartesian world frame.
+ |  
+ |  get_world_position(...)
+ |      get_world_position(*args, **kwargs)
+ |      Overloaded function.
+ |      
+ |      1. get_world_position(self: raisimpy.Object, local_idx: int) -> numpy.ndarray[float64]
+ |      
+ |      
+ |                  Get the world position.
+ |      
+ |                  Args:
+ |                      local_idx (int): local index.
+ |      
+ |                  Returns:
+ |                      np.array[float[3]]: position expressed in the Cartesian world frame.
+ |                  
+ |      
+ |      2. get_world_position(self: raisimpy.Object, arg0: int, arg1: numpy.ndarray[float64]) -> numpy.ndarray[float64]
+ |  
+ |  get_world_rotation_matrix(...)
+ |      get_world_rotation_matrix(self: raisimpy.Object, local_idx: int) -> numpy.ndarray[float64]
+ |      
+ |      
+ |      Get the world orientation as a rotation matrix.
+ |      
+ |      Args:
+ |          local_idx (int): local index.
+ |      
+ |      Returns:
+ |          np.array[float[3,3]]: rotation matrix.
  |  
  |  set_index_in_world(...)
  |      set_index_in_world(self: raisimpy.Object, index: int) -> None

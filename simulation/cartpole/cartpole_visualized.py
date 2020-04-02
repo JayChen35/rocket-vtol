@@ -1,4 +1,5 @@
 #!/usr/bin/env python
+# UR RETARDED AND PROLLY GONNA FORGET THIS, BUT USE THE TERMINAL IN MOBA X TERM, NOT JUST THE X SERVER
 """Chain example using the visualizer.
 
 This is the same example as provided in [1], but translated into Python and using the `raisimpy` library (which
